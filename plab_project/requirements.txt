@@ -7,7 +7,7 @@ gunicorn>=22.0
 # Optional: PostgreSQL (uncomment if you use DATABASE_URL / Postgres)
 psycopg[binary]>=3.1
 dj-database-url>=2.1
-django-cloudinary-storage
+django-cloudinary-storage==0.3.0
 
 asgiref==3.11.1
 Django==6.0.3

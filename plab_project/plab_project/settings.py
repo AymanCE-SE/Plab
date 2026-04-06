@@ -7,6 +7,7 @@ via python-dotenv. See `.env.example` for variables.
 
 from pathlib import Path
 import os
+import dj_database_url
 
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import gettext_lazy as _
@@ -55,8 +56,10 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "cloudinary_storage",
     "django.contrib.staticfiles",
     "lab_core",
+    "cloudinary"
 ]
 
 AUTH_USER_MODEL = "lab_core.User"
@@ -95,11 +98,20 @@ TEMPLATES = [
 WSGI_APPLICATION = "plab_project.wsgi.application"
 
 _sqlite_name = _env_str("SQLITE_PATH", "db.sqlite3")
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": Path(_sqlite_name) if Path(_sqlite_name).is_absolute() else BASE_DIR / _sqlite_name,
+#     }
+# }
+
+# --- Database Configuration ---
+# سيحاول النظام القراءة من DATABASE_URL (لـ Postgres)، وإذا لم يجدها سيستخدم SQLite محلياً
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": Path(_sqlite_name) if Path(_sqlite_name).is_absolute() else BASE_DIR / _sqlite_name,
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / _env_str('SQLITE_PATH', 'db.sqlite3')}",
+        conn_max_age=600,
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -126,11 +138,27 @@ def _url_with_trailing_slash(url: str, default: str) -> str:
     u = (url or default).strip()
     return u if u.endswith("/") else u + "/"
 
+# --- Cloudinary & Static/Media ---
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+}
 
-STATIC_URL = _url_with_trailing_slash(os.getenv("STATIC_URL"), "static/")
+# إذا وجدت بيانات Cloudinary، سيتم استخدامها للميديا
+if CLOUDINARY_STORAGE['CLOUD_NAME']:
+    _media_backend = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
+else:
+    _media_backend = 'django.core.files.storage.FileSystemStorage'
+
+# STATIC_URL = _url_with_trailing_slash(os.getenv("STATIC_URL"), "static/")
+# STATIC_ROOT = BASE_DIR / _env_str("STATIC_ROOT_DIR", "staticfiles")
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / _env_str("STATIC_ROOT_DIR", "staticfiles")
 
-MEDIA_URL = _url_with_trailing_slash(os.getenv("MEDIA_URL"), "/media/")
+# MEDIA_URL = _url_with_trailing_slash(os.getenv("MEDIA_URL"), "/media/")
+# MEDIA_ROOT = BASE_DIR / _env_str("MEDIA_ROOT_DIR", "media")
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / _env_str("MEDIA_ROOT_DIR", "media")
 
 STATICFILES_DIRS = [
@@ -145,7 +173,7 @@ _staticfiles_backend = (
 
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": _media_backend,
     },
     "staticfiles": {
         "BACKEND": _staticfiles_backend,
