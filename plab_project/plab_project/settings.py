@@ -98,21 +98,21 @@ TEMPLATES = [
 WSGI_APPLICATION = "plab_project.wsgi.application"
 
 _sqlite_name = _env_str("SQLITE_PATH", "db.sqlite3")
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": Path(_sqlite_name) if Path(_sqlite_name).is_absolute() else BASE_DIR / _sqlite_name,
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": Path(_sqlite_name) if Path(_sqlite_name).is_absolute() else BASE_DIR / _sqlite_name,
+    }
+}
 
 # --- Database Configuration ---
 # سيحاول النظام القراءة من DATABASE_URL (لـ Postgres)، وإذا لم يجدها سيستخدم SQLite محلياً
-DATABASES = {
-    'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / _env_str('SQLITE_PATH', 'db.sqlite3')}",
-        conn_max_age=600,
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=f"sqlite:///{BASE_DIR / _env_str('SQLITE_PATH', 'db.sqlite3')}",
+#         conn_max_age=600,
+#     )
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
