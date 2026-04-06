@@ -1,0 +1,253 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+<head>
+    <!-- icon links -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+    
+    <link rel="shortcut icon" href="{% static 'images' %}">
+    
+    <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
+    
+    <!-- end icon links -->
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#ffffff">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "PLAB Lab" %}</title>
+        <!-- Bootstrap 5 CSS -->
+        {% if LANGUAGE_BIDI %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    {% else %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    {% endif %}
+    {% block extra_head %}{% endblock %}
+<style>
+        :root {
+            --plab-primary: #0056b3; /* PLAB Blue */
+            --plab-dark: #003e85;
+            --plab-bg: #f5f9ff;
+            --plab-surface: #ffffff;
+        }
+        body {
+            background: var(--plab-bg);
+            color: #12324d;
+        }
+        body.plab-layout {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .plab-main {
+            flex: 1 0 auto;
+        }
+        .plab-footer {
+            flex-shrink: 0;
+            background: linear-gradient(180deg, var(--plab-dark) 0%, #001f42 100%);
+            color: rgba(255, 255, 255, 0.88);
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            margin-top: 2rem;
+        }
+        .plab-footer a {
+            color: rgba(255, 255, 255, 0.78);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .plab-footer a:hover,
+        .plab-footer a:focus {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .plab-footer .plab-footer-brand {
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #fff;
+        }
+        .plab-footer .plab-footer-tagline {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 22rem;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+        .text-primary {
+            color: var(--plab-primary) !important;
+        }
+        .btn-primary {
+            background-color: var(--plab-primary);
+            border-color: var(--plab-primary);
+        }
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: var(--plab-dark);
+            border-color: var(--plab-dark);
+        }
+        .table-primary {
+            --bs-table-bg: #e7f1ff;
+        }
+        .plab-card {
+            background: var(--plab-surface);
+            border: 1px solid #d6e6ff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 24px rgba(0, 86, 179, 0.12);
+        }
+        .navbar .nav-link {
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 500;
+        }
+        .navbar .nav-link:hover,
+        .navbar .nav-link:focus {
+            color: #ffffff;
+        }
+        .navbar .btn-outline-light {
+            border-radius: 0.7rem;
+        }
+        /* Lab announcements — clear, calm, medical tone */
+        .plab-announcement {
+            border: 1px solid #b8d4f0;
+            border-left: 4px solid var(--plab-primary);
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #e8f2fc 0%, #f5f9ff 100%);
+            box-shadow: 0 4px 14px rgba(0, 86, 179, 0.08);
+        }
+        .plab-announcement .plab-announcement-title {
+            font-weight: 600;
+            color: var(--plab-dark);
+        }
+    </style>
+</head>
+<body class="plab-layout">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--plab-dark);">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'lab_core:home' %}">{% trans "PLAB" %}</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#plabNavbar"
+                    aria-controls="plabNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="plabNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-1">
+                    <li class="nav-item">
+                        <a href="{% url 'lab_core:home' %}" class="nav-link">{% trans 'Home' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'lab_core:about' %}" class="nav-link">{% trans 'About Us' %}</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{% url 'lab_core:dashboard' %}" class="nav-link">{% trans 'Dashboard' %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'lab_core:profile' %}" class="nav-link">{% trans 'Profile' %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'lab_core:change_password' %}" class="nav-link">{% trans 'Change Password' %}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2">
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <form method="post" action="{% url 'lab_core:logout' %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-light btn-sm">{% trans 'Logout' %}</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'lab_core:login' %}" class="btn btn-light btn-sm">{% trans 'Login / Sign-up' %}</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="nav-item">
+                        <form action="{% url 'set_language' %}" method="post" class="m-0">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                            <select name="language" onchange="this.form.submit()" class="form-select form-select-sm">
+                                <option value="ar" {% if LANGUAGE_CODE == 'ar' %}selected{% endif %}>{% trans "Arabic" %}</option>
+                                <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>{% trans "English" %}</option>
+                            </select>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4 plab-main">
+        {% if lab_announcements %}
+            <div class="mb-3">
+                {% for ann in lab_announcements %}
+                    <div class="alert plab-announcement mb-2 py-3" role="alert">
+                        {% if ann.title %}
+                            <div class="plab-announcement-title mb-1">{{ ann.title }}</div>
+                        {% endif %}
+                        <div class="mb-0" style="white-space: pre-line;">{{ ann.body }}</div>
+                        {% if ann.link_url and ann.link_label %}
+                            <a href="{{ ann.link_url }}" class="btn btn-sm btn-primary mt-2" target="_blank" rel="noopener">{{ ann.link_label }}</a>
+                        {% elif ann.link_url %}
+                            <a href="{{ ann.link_url }}" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener">{% trans "Learn more" %}</a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="plab-footer">
+        <div class="container py-4">
+            <div class="row g-4 align-items-start align-items-md-center">
+                <div class="col-md-5 col-lg-6">
+                    <div class="plab-footer-brand mb-1">{% trans "PLAB" %}</div>
+                    <p class="plab-footer-tagline mb-2 mb-md-0">{% trans "Secure laboratory portal for patients." %}</p>
+                    <p class="small text-white-50 mb-0">© {% now "Y" %} {% trans "All rights reserved." %}</p>
+                </div>
+                <div class="col-md-7 col-lg-6">
+                    <div class="small text-uppercase text-white-50 fw-semibold mb-2">{% trans "Quick links" %}</div>
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item me-3">
+                            <a href="{% url 'lab_core:home' %}">{% trans "Home" %}</a>
+                        </li>
+                        <li class="list-inline-item me-3">
+                            <a href="{% url 'lab_core:about' %}">{% trans "About Us" %}</a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                            <li class="list-inline-item me-3">
+                                <a href="{% url 'lab_core:dashboard' %}">{% trans "Dashboard" %}</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{% url 'lab_core:profile' %}">{% trans "Profile" %}</a>
+                            </li>
+                        {% else %}
+                            <li class="list-inline-item me-3">
+                                <a href="{% url 'lab_core:login' %}">{% trans "Sign In" %}</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{% url 'lab_core:signup' %}">{% trans "Create an account" %}</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

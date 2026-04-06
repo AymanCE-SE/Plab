@@ -1,0 +1,53 @@
+{% extends "lab_core/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <article class="card plab-card">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="card-img-top" style="max-height: 380px; object-fit: cover;">
+            {% endif %}
+            <div class="card-body p-4 p-md-5">
+                <div class="d-flex align-items-start justify-content-between gap-2 flex-wrap mb-2">
+                    <h2 class="text-primary mb-0">{{ post.title }}</h2>
+                    {% if post.is_pinned %}
+                        <span class="badge text-bg-warning text-dark align-self-start">{% trans "Pinned" %}</span>
+                    {% endif %}
+                </div>
+                <p class="small text-muted mb-1">
+                    {% trans "Posted by:" %}
+                    {% if post.posted_by %}
+                        {{ post.posted_by.full_name }}
+                    {% else %}
+                        {% trans "Admin" %}
+                    {% endif %}
+                    | {{ post.created_at|date:"M d, Y" }}
+                </p>
+                {% if post.description %}
+                    <p class="lead mt-3">{{ post.description }}</p>
+                {% endif %}
+                <hr>
+                <p style="white-space: pre-line;">{{ post.content }}</p>
+
+                <div class="d-flex align-items-center gap-2 mt-4">
+                    {% if request.user.is_authenticated %}
+                        <form method="post" action="{% url 'lab_core:toggle_heart' post.pk %}" class="m-0">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                {% if has_hearted %}{% trans "Unheart" %}{% else %}{% trans "Heart" %}{% endif %}
+                            </button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'lab_core:login' %}" class="btn btn-primary btn-sm">{% trans "Login to Heart" %}</a>
+                    {% endif %}
+                    <span class="small text-muted">&#10084; {{ post.hearts_total|default:0 }} {% trans "hearts" %}</span>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock %}

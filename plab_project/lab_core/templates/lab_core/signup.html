@@ -1,0 +1,60 @@
+{% extends "lab_core/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Patient Sign Up" %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-3">
+    <div class="col-lg-7">
+        <div class="card plab-card">
+            <div class="card-body p-4 p-md-5">
+                <h3 class="text-primary mb-1">{% trans "Create Patient Account" %}</h3>
+                <p class="text-muted mb-4">{% trans "Join PLAB to securely access your laboratory reports." %}</p>
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                    {% endif %}
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="{{ form.full_name.id_for_label }}" class="form-label">{% trans "Full Name" %}</label>
+                            {{ form.full_name }}
+                            {% if form.full_name.errors %}<div class="text-danger small mt-1">{{ form.full_name.errors }}</div>{% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ form.phone_number.id_for_label }}" class="form-label">{% trans "Phone Number" %}</label>
+                            {{ form.phone_number }}
+                            {% if form.phone_number.errors %}<div class="text-danger small mt-1">{{ form.phone_number.errors }}</div>{% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ form.age.id_for_label }}" class="form-label">{% trans "Age" %}</label>
+                            {{ form.age }}
+                            {% if form.age.errors %}<div class="text-danger small mt-1">{{ form.age.errors }}</div>{% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ form.gender.id_for_label }}" class="form-label">{% trans "Gender" %}</label>
+                            {{ form.gender }}
+                            {% if form.gender.errors %}<div class="text-danger small mt-1">{{ form.gender.errors }}</div>{% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ form.password1.id_for_label }}" class="form-label">{% trans "Password" %}</label>
+                            {{ form.password1 }}
+                            {% if form.password1.errors %}<div class="text-danger small mt-1">{{ form.password1.errors }}</div>{% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ form.password2.id_for_label }}" class="form-label">{% trans "Confirm Password" %}</label>
+                            {{ form.password2 }}
+                            {% if form.password2.errors %}<div class="text-danger small mt-1">{{ form.password2.errors }}</div>{% endif %}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mt-4">{% trans "Create Account" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

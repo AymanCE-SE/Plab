@@ -1,0 +1,311 @@
+{% extends "lab_core/base.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+    .plab-about-hero {
+        border-radius: 1.25rem;
+        background: linear-gradient(135deg, var(--plab-dark) 0%, var(--plab-primary) 55%, #1a7fd4 100%);
+        color: #fff;
+        padding: 2.5rem 2rem;
+        box-shadow: 0 18px 40px rgba(0, 62, 133, 0.28);
+        position: relative;
+        overflow: hidden;
+    }
+    .plab-about-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 85% 20%, rgba(255,255,255,0.18) 0%, transparent 45%);
+        pointer-events: none;
+    }
+    .plab-about-hero .plab-about-hero-inner {
+        position: relative;
+        z-index: 1;
+    }
+    .plab-about-hero h1 {
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+    .plab-about-hero .lead {
+        opacity: 0.95;
+        max-width: 36rem;
+    }
+    .plab-feature-card {
+        border-radius: 1rem;
+        border: 1px solid #d6e6ff;
+        background: var(--plab-surface);
+        height: 100%;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .plab-feature-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 32px rgba(0, 86, 179, 0.12);
+    }
+    .plab-feature-icon {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.85rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #e8f2fc, #d6eaff);
+        color: var(--plab-primary);
+        font-size: 1.35rem;
+    }
+    .plab-contact-panel {
+        border-radius: 1.25rem;
+        border: 1px solid #c8ddf5;
+        background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+        box-shadow: 0 12px 28px rgba(0, 86, 179, 0.1);
+    }
+    .plab-contact-row {
+        border-bottom: 1px solid #e3eef9;
+        padding: 1.25rem 1.5rem;
+    }
+    .plab-contact-row:last-child {
+        border-bottom: 0;
+    }
+    .plab-placeholder {
+        border: 1px dashed #b8d4f0;
+        border-radius: 0.75rem;
+        padding: 0.85rem 1rem;
+        background: rgba(255, 255, 255, 0.7);
+    }
+    .plab-about-split-heading {
+        font-weight: 700;
+        color: var(--plab-primary);
+        letter-spacing: 0.02em;
+    }
+    .plab-icon-medical {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #e8f2fc, #d6eaff);
+        color: var(--plab-primary);
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+    .plab-map-card {
+        border-radius: 1.25rem;
+        border: 1px solid #c8ddf5;
+        background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+        box-shadow: 0 12px 28px rgba(0, 86, 179, 0.1);
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .plab-map-card .plab-map-card-head {
+        padding: 1.25rem 1.5rem 1rem;
+        border-bottom: 1px solid #e3eef9;
+        background: rgba(255, 255, 255, 0.9);
+    }
+    .plab-map-embed-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        min-height: 220px;
+        max-height: min(70vh, 520px);
+        background: #e8f0fa;
+    }
+    .plab-map-embed-wrap iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+    .plab-map-embed-wrap.plab-map-placeholder {
+        aspect-ratio: auto;
+        min-height: 280px;
+    }
+</style>
+{% endblock %}
+
+{% block title %}{% trans "About Us" %}{% endblock %}
+
+{% block content %}
+<div class="plab-about-hero mb-4">
+    <div class="plab-about-hero-inner">
+        <p class="text-uppercase small fw-semibold mb-2 opacity-75">{% trans "PLAB" %}</p>
+        <h1 class="mb-3">{% trans "About PLAB" %}</h1>
+        <p class="lead mb-4">{% trans "Your partner for accurate diagnostics and a calm, clear patient experience." %}</p>
+        <div class="d-flex flex-wrap gap-2">
+            <a href="{% url 'lab_core:home' %}" class="btn btn-light btn-sm">{% trans "Explore health advice" %}</a>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'lab_core:dashboard' %}" class="btn btn-outline-light btn-sm">{% trans "Go to dashboard" %}</a>
+            {% else %}
+                <a href="{% url 'lab_core:login' %}" class="btn btn-outline-light btn-sm">{% trans "Patient Login" %}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4 align-items-stretch">
+    {# Text first: appears on the right in RTL (Arabic) and on the left in LTR (English). #}
+    <div class="col-lg-6">
+        <div class="plab-contact-panel h-100 mb-0">
+            <div class="px-4 pt-4 pb-2 border-bottom border-light">
+                <h4 class="plab-about-split-heading mb-1">{% trans "Contact us" %}</h4>
+                <p class="text-muted small mb-0">{% trans "For more information please contact us." %}</p>
+            </div>
+
+            <div class="plab-contact-row">
+                <div class="d-flex align-items-start gap-3">
+                    <span class="plab-icon-medical" aria-hidden="true"><i class="bi bi-clipboard2-pulse"></i></span>
+                    <div class="flex-grow-1 min-w-0">
+                        <div class="fw-semibold text-primary mb-2">{% trans "Description" %}</div>
+                        {% if lab_description %}
+                            <div class="text-muted" style="white-space: pre-line;">{{ lab_description }}</div>
+                        {% else %}
+                            <div class="plab-placeholder text-muted small mb-0">
+                                {% trans "Placeholder: Add your laboratory description in settings as PLAB_ABOUT_DESCRIPTION (English) and PLAB_ABOUT_DESCRIPTION_AR (Arabic)." %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="plab-contact-row">
+                <div class="d-flex align-items-start gap-3">
+                    <span class="plab-icon-medical" aria-hidden="true"><i class="bi bi-telephone-fill"></i></span>
+                    <div class="flex-grow-1 min-w-0">
+                        <div class="fw-semibold text-primary mb-2">{% trans "Phone" %}</div>
+                        {% if lab_phone %}
+                            <a href="tel:{{ lab_phone }}" class="text-decoration-none fw-medium d-inline-flex align-items-center gap-2">
+                                <i class="bi bi-telephone-outbound text-primary"></i>
+                                <span>{{ lab_phone }}</span>
+                            </a>
+                        {% else %}
+                            <div class="plab-placeholder text-muted small mb-0">
+                                {% trans "Placeholder: Add your lab phone in settings as PLAB_ABOUT_PHONE." %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="plab-contact-row">
+                <div class="d-flex align-items-start gap-3">
+                    <span class="plab-icon-medical" aria-hidden="true"><i class="bi bi-geo-alt-fill"></i></span>
+                    <div class="flex-grow-1 min-w-0">
+                        <div class="fw-semibold text-primary mb-2">{% trans "Address" %}</div>
+                        {% if lab_address %}
+                            <div class="text-muted d-flex align-items-start gap-2">
+                                <i class="bi bi-pin-map text-primary mt-1 flex-shrink-0"></i>
+                                <span style="white-space: pre-line;">{{ lab_address }}</span>
+                            </div>
+                        {% else %}
+                            <div class="plab-placeholder text-muted small mb-0">
+                                {% trans "Placeholder: Add your address in settings as PLAB_ABOUT_ADDRESS (English) and PLAB_ABOUT_ADDRESS_AR (Arabic)." %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="plab-contact-row">
+                <div class="d-flex align-items-start gap-3">
+                    <span class="plab-icon-medical" aria-hidden="true"><i class="bi bi-clock"></i></span>
+                    <div class="flex-grow-1 min-w-0">
+                        <div class="fw-semibold text-primary mb-2">{% trans "Working hours" %}</div>
+                        {% if lab_hours %}
+                            <div class="text-muted d-flex align-items-start gap-2">
+                                <i class="bi bi-calendar-week text-primary mt-1 flex-shrink-0"></i>
+                                <span style="white-space: pre-line;">{{ lab_hours }}</span>
+                            </div>
+                        {% else %}
+                            <div class="plab-placeholder text-muted small mb-0">
+                                {% trans "Placeholder: Add working hours in settings as PLAB_ABOUT_HOURS and PLAB_ABOUT_HOURS_AR." %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="plab-map-card">
+            <div class="plab-map-card-head">
+                <h4 class="plab-about-split-heading mb-0 d-flex align-items-center gap-2">
+                    <i class="bi bi-map" aria-hidden="true"></i>
+                    {% trans "Our location" %}
+                </h4>
+            </div>
+            {% if map_embed_url %}
+                <div class="plab-map-embed-wrap">
+                    <iframe
+                        src="{{ map_embed_url }}"
+                        title="{% trans 'Our location' %}"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div>
+            {% else %}
+                <div class="plab-map-embed-wrap plab-map-placeholder d-flex align-items-center justify-content-center p-4">
+                    <div class="text-center text-muted small px-2">
+                        <i class="bi bi-geo-alt d-block fs-1 text-primary opacity-50 mb-3" aria-hidden="true"></i>
+                        <p class="mb-0">{% trans "Map embed URL is not configured yet. Add PLAB_MAP_EMBED_URL in your project settings (Google Maps → Share → Embed a map → copy the iframe src URL)." %}</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="p-4 plab-feature-card">
+            <div class="plab-feature-icon mb-3"><i class="bi bi-shield-lock"></i></div>
+            <h5 class="text-primary mb-2">{% trans "Secure access" %}</h5>
+            <p class="text-muted small mb-0">{% trans "View your lab results online when they are published—private and easy to use." %}</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-4 plab-feature-card">
+            <div class="plab-feature-icon mb-3"><i class="bi bi-clipboard2-pulse"></i></div>
+            <h5 class="text-primary mb-2">{% trans "Clear status" %}</h5>
+            <p class="text-muted small mb-0">{% trans "Follow each test from processing to ready for download, with expected timing when available." %}</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-4 plab-feature-card">
+            <div class="plab-feature-icon mb-3"><i class="bi bi-heart-pulse"></i></div>
+            <h5 class="text-primary mb-2">{% trans "Trusted care" %}</h5>
+            <p class="text-muted small mb-0">{% trans "Health advice posts and lab announcements help you stay informed between visits." %}</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="card plab-card">
+    <div class="card-body p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+        {% if request.user.is_authenticated %}
+            <div>
+                <h5 class="text-primary mb-1">{% trans "You are signed in" %}</h5>
+                <p class="text-muted small mb-0">{% trans "Open your dashboard to see lab tests, statuses, and published results." %}</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{% url 'lab_core:dashboard' %}" class="btn btn-primary btn-sm">{% trans "Go to dashboard" %}</a>
+                <a href="{% url 'lab_core:profile' %}" class="btn btn-outline-primary btn-sm">{% trans "Profile" %}</a>
+            </div>
+        {% else %}
+            <div>
+                <h5 class="text-primary mb-1">{% trans "Ready to get started?" %}</h5>
+                <p class="text-muted small mb-0">{% trans "Create an account or sign in to track your tests and downloads." %}</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{% url 'lab_core:signup' %}" class="btn btn-primary btn-sm">{% trans "Create an account" %}</a>
+                <a href="{% url 'lab_core:login' %}" class="btn btn-outline-primary btn-sm">{% trans "Sign In" %}</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

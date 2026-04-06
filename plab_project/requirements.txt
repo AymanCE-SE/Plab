@@ -1,0 +1,18 @@
+# PLAB — production-oriented dependencies (pin versions in real deployments).
+# Django>=6.0,<7
+gunicorn>=22.0
+# python-dotenv>=1.0.0
+# whitenoise>=6.6.0
+
+# Optional: PostgreSQL (uncomment if you use DATABASE_URL / Postgres)
+psycopg[binary]>=3.1
+dj-database-url>=2.1
+django-cloudinary-storage
+
+asgiref==3.11.1
+Django==6.0.3
+pillow==12.2.0
+python-dotenv==1.2.2
+sqlparse==0.5.5
+tzdata==2025.3
+whitenoise==6.12.0

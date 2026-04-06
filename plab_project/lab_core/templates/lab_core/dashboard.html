@@ -1,0 +1,128 @@
+{% extends "lab_core/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Dashboard" %}{% endblock %}
+
+{% block extra_head %}
+<style>
+    .plab-dashboard-tests .table thead th {
+        font-weight: 600;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+    .plab-dashboard-tests .table td {
+        vertical-align: middle;
+    }
+    .plab-status-pending {
+        background-color: #ffc107 !important;
+        color: #212529 !important;
+    }
+    .plab-status-review {
+        background-color: #0d6efd !important;
+        color: #fff !important;
+    }
+    .plab-status-ready {
+        background-color: #198754 !important;
+        color: #fff !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h2 class="text-primary">{% trans "Welcome" %}, {{ request.user.full_name }}</h2>
+    <p class="text-muted mb-0">{% trans "Track all your lab tests and download results when they're ready." %}</p>
+</div>
+
+<div class="card plab-card mb-4">
+    <div class="card-header bg-white border-0 pt-3">
+        <h5 class="mb-0 text-primary">{% trans "Patient Profile" %}</h5>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="small text-muted">{% trans "Full Name" %}</div>
+                <div class="fw-semibold">{{ request.user.full_name }}</div>
+            </div>
+            <div class="col-md-4">
+                <div class="small text-muted">{% trans "Age" %}</div>
+                <div class="fw-semibold">
+                    {% if patient_profile %}{{ patient_profile.age }}{% else %}{% trans "N/A" %}{% endif %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="small text-muted">{% trans "Gender" %}</div>
+                <div class="fw-semibold">
+                    {% if patient_profile %}{{ patient_profile.get_gender_display }}{% else %}{% trans "N/A" %}{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card plab-card">
+    <div class="card-header bg-white border-0 pt-3">
+        <h5 class="mb-0 text-primary">{% trans "Your Lab Tests" %}</h5>
+    </div>
+    <div class="card-body p-0 p-md-3">
+        {% if results %}
+            <div class="table-responsive plab-dashboard-tests">
+                <table class="table table-hover table-striped align-middle mb-0">
+                    <thead class="table-primary">
+                        <tr>
+                            <th scope="col">{% trans "Test Name" %}</th>
+                            <th scope="col">{% trans "Date" %}</th>
+                            <th scope="col">{% trans "Expected Delivery" %}</th>
+                            <th scope="col" class="text-center">{% trans "Status" %}</th>
+                            <th scope="col" class="text-center">{% trans "Result" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in results %}
+                            <tr>
+                                <td class="fw-medium">{{ result.test_name }}</td>
+                                <td>{{ result.recorded_date|date:"SHORT_DATE_FORMAT" }}</td>
+                                <td>
+                                    {% if result.expected_delivery %}
+                                        {{ result.expected_delivery|date:"SHORT_DATETIME_FORMAT" }}
+                                    {% else %}
+                                        <span class="text-muted small">{% trans "N/A" %}</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-center">
+                                    {% if result.status == "PENDING" %}
+                                        <span class="badge rounded-pill plab-status-pending">{% trans "Processing" %}</span>
+                                    {% elif result.status == "REVIEW" %}
+                                        <span class="badge rounded-pill plab-status-review">{% trans "Under Review" %}</span>
+                                    {% elif result.status == "COMPLETED" %}
+                                        <span class="badge rounded-pill plab-status-ready">{% trans "Ready" %}</span>
+                                    {% else %}
+                                        <span class="badge text-bg-secondary">{{ result.get_status_display }}</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-center">
+                                    {% if result.can_download %}
+                                        <a href="{{ result.pdf_result.url }}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+                                            {% trans "Download" %}
+                                        </a>
+                                    {% elif result.is_published and result.status == "COMPLETED" and not result.has_file %}
+                                        <span class="text-muted small">{% trans "File unavailable" %}</span>
+                                    {% else %}
+                                        <span class="text-muted small">—</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="p-4">
+                <div class="alert alert-info border-0 mb-0 shadow-sm" role="status">
+                    {% trans "No tests found" %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
