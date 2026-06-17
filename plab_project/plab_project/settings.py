@@ -195,7 +195,7 @@ PLAB_ABOUT_HOURS = _env_str("PLAB_ABOUT_HOURS", "Open 7 days a week: 10:00 AM �
 PLAB_ABOUT_HOURS_AR = _env_str("PLAB_ABOUT_HOURS_AR", "طوال ايام الاسبوع: ١٠ ص – ١٢ ص")
 PLAB_MAP_EMBED_URL = _env_str(
     "PLAB_MAP_EMBED_URL",
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d214.78763152826744!2d31.67282783324484!3d30.532288431757497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f81c87f679baf3%3A0x9f1f003e86d777ee!2sAbu%20Hammad%2C%20Kafr%20Al%20Azzazi%2C%20Abu%20Hammad%2C%20Al-Sharqia%20Governorate!5e0!3m2!1sen!2seg!4v1775297659513!5m2!1sen!2seg",
+    "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d214.78767455545628!2d31.672667252118075!3d30.532268971503886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1781731092675!5m2!1sen!2seg",
 )
 
 # --- Production security ---
