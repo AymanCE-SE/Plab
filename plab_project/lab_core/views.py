@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, PasswordChangeView as DjangoPasswordChangeView
-from django.views.generic import TemplateView, CreateView, FormView
+from django.views.generic import TemplateView, CreateView, FormView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
@@ -11,6 +11,8 @@ from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django.utils import translation
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 from .models import LabResult, PatientProfile, BlogPost
 from .forms import PatientSignUpForm, AccountProfileForm
@@ -96,22 +98,39 @@ class AboutView(TemplateView):
         return context
 
 
-class BlogPostDetailView(TemplateView):
+# class BlogPostDetailView(TemplateView):
+#     template_name = "lab_core/post_detail.html"
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         post = get_object_or_404(
+#             BlogPost.objects.select_related("posted_by").annotate(hearts_total=Count("hearts")),
+#             slug=self.kwargs["slug"],
+#         )
+#         context["post"] = post
+#         context["has_hearted"] = (
+#             self.request.user.is_authenticated and post.hearts.filter(pk=self.request.user.pk).exists()
+#         )
+#         return context
+
+class BlogPostDetailView(DetailView):
+    model = BlogPost
     template_name = "lab_core/post_detail.html"
+    context_object_name = "post"
+    query_pk_and_slug = True 
+
+    def get_queryset(self):
+        return BlogPost.objects.select_related("posted_by").annotate(hearts_total=Count("hearts"))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        post = get_object_or_404(
-            BlogPost.objects.select_related("posted_by").annotate(hearts_total=Count("hearts")),
-            pk=self.kwargs["pk"],
-        )
-        context["post"] = post
+        post = self.object 
+        
         context["has_hearted"] = (
             self.request.user.is_authenticated and post.hearts.filter(pk=self.request.user.pk).exists()
         )
         return context
-
-
+    
 class ProfileView(LoginRequiredMixin, FormView):
     """Let patients update name, age, and gender."""
 
@@ -144,18 +163,40 @@ class ChangePasswordView(LoginRequiredMixin, DjangoPasswordChangeView):
         return response
 
 
-class ToggleHeartView(LoginRequiredMixin, View):
-    """Add/remove a heart reaction for the current logged-in user."""
-    login_url = "lab_core:login"
+# class ToggleHeartView(LoginRequiredMixin, View):
+#     """Add/remove a heart reaction for the current logged-in user."""
+#     login_url = "lab_core:login"
 
-    def post(self, request, pk):
+#     def post(self, request, pk):
+#         post = get_object_or_404(BlogPost, pk=pk)
+#         if post.hearts.filter(pk=request.user.pk).exists():
+#             post.hearts.remove(request.user)
+#         else:
+#             post.hearts.add(request.user)
+#         return redirect(request.POST.get("next") or "lab_core:home")
+
+@login_required
+def like_post_ajax(request, pk):
+    if request.method == "POST":
         post = get_object_or_404(BlogPost, pk=pk)
-        if post.hearts.filter(pk=request.user.pk).exists():
-            post.hearts.remove(request.user)
+        user = request.user
+        
+        if post.hearts.filter(pk=user.pk).exists():
+            post.hearts.remove(user)
+            has_hearted = False
         else:
-            post.hearts.add(request.user)
-        return redirect(request.POST.get("next") or "lab_core:home")
-
+            post.hearts.add(user)
+            has_hearted = True
+            
+        total_hearts = post.hearts.count()
+        
+        return JsonResponse({
+            "status": "ok",
+            "has_hearted": has_hearted,
+            "total_hearts": total_hearts
+        })
+        
+    return JsonResponse({"status": "error", "message": "Invalid request"}, status=400)
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     """Show all lab tests for the logged-in patient."""

@@ -10,6 +10,7 @@
             {% if post.image %}
                 <img src="{{ post.image.url }}" alt="{{ post.title }}" class="card-img-top" style="max-height: 380px; object-fit: cover;">
             {% endif %}
+            
             <div class="card-body p-4 p-md-5">
                 <div class="d-flex align-items-start justify-content-between gap-2 flex-wrap mb-2">
                     <h2 class="text-primary mb-0">{{ post.title }}</h2>
@@ -17,6 +18,7 @@
                         <span class="badge text-bg-warning text-dark align-self-start">{% trans "Pinned" %}</span>
                     {% endif %}
                 </div>
+                
                 <p class="small text-muted mb-1">
                     {% trans "Posted by:" %}
                     {% if post.posted_by %}
@@ -26,28 +28,101 @@
                     {% endif %}
                     | {{ post.created_at|date:"M d, Y" }}
                 </p>
+                
                 {% if post.description %}
                     <p class="lead mt-3">{{ post.description }}</p>
                 {% endif %}
+                
                 <hr>
+                
                 <p style="white-space: pre-line;">{{ post.content }}</p>
 
                 <div class="d-flex align-items-center gap-2 mt-4">
                     {% if request.user.is_authenticated %}
-                        <form method="post" action="{% url 'lab_core:toggle_heart' post.pk %}" class="m-0">
-                            {% csrf_token %}
-                            <input type="hidden" name="next" value="{{ request.path }}">
-                            <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="button" 
+                                id="heart-toggle-btn" 
+                                data-url="{% url 'lab_core:like_post_ajax' post.pk %}"
+                                data-text-heart="{% trans 'Heart' %}"
+                                data-text-unheart="{% trans 'Unheart' %}"
+                                class="btn btn-primary btn-sm m-0">
+                            <span id="heart-btn-text">
                                 {% if has_hearted %}{% trans "Unheart" %}{% else %}{% trans "Heart" %}{% endif %}
-                            </button>
-                        </form>
+                            </span>
+                        </button>
                     {% else %}
-                        <a href="{% url 'lab_core:login' %}" class="btn btn-primary btn-sm">{% trans "Login to Heart" %}</a>
+                        <a href="{% url 'lab_core:login' %}" class="btn btn-primary btn-sm m-0">{% trans "Login to Heart" %}</a>
                     {% endif %}
-                    <span class="small text-muted">&#10084; {{ post.hearts_total|default:0 }} {% trans "hearts" %}</span>
+                    
+                    <span class="small text-muted m-0">
+                        &#10084; <span id="heart-count-display">{{ post.hearts_total|default:0 }}</span> {% trans "hearts" %}
+                    </span>
                 </div>
+                
             </div>
         </article>
     </div>
 </div>
+{% endblock %}
+
+{# --- هنا عزلنا الجاوا سكريبت في مكانها الصح --- #}
+{% block js %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const heartBtn = document.getElementById("heart-toggle-btn");
+    
+    if (heartBtn) {
+        heartBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            
+            const url = this.getAttribute("data-url");
+            const textHeart = this.getAttribute("data-text-heart");
+            const textUnheart = this.getAttribute("data-text-unheart");
+            
+            const btnTextSpan = document.getElementById("heart-btn-text");
+            const countDisplay = document.getElementById("heart-count-display");
+            
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            
+            const csrftoken = getCookie('csrftoken');
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'ok') {
+                    countDisplay.innerText = data.total_hearts;
+                    if (data.has_hearted) {
+                        btnTextSpan.innerText = textUnheart;
+                    } else {
+                        btnTextSpan.innerText = textHeart;
+                    }
+                } else {
+                    console.error("Server Error:", data.message);
+                }
+            })
+            .catch(error => console.error('Fetch Error:', error));
+        });
+    }
+});
+</script>
 {% endblock %}

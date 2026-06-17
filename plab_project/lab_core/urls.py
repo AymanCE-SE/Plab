@@ -8,9 +8,10 @@ from .views import (
     HomeView,
     AboutView,
     BlogPostDetailView,
-    ToggleHeartView,
+    # ToggleHeartView,
     ProfileView,
     ChangePasswordView,
+    like_post_ajax
 )
 
 app_name = "lab_core"
@@ -18,8 +19,9 @@ app_name = "lab_core"
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("about/", AboutView.as_view(), name="about"),
-    path("posts/<int:pk>/", BlogPostDetailView.as_view(), name="post_detail"),
-    path("posts/<int:pk>/heart/", ToggleHeartView.as_view(), name="toggle_heart"),
+    path("posts/<str:slug>/", BlogPostDetailView.as_view(), name="post_detail"),
+    # path("posts/<int:pk>/heart/", ToggleHeartView.as_view(), name="toggle_heart"),
+    path("posts/<int:pk>/like/", like_post_ajax, name="like_post_ajax"),
     path("login/", PatientLoginView.as_view(), name="login"),
     path("signup/", SignUpView.as_view(), name="signup"),
     path("dashboard/", DashboardView.as_view(), name="dashboard"),

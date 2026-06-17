@@ -56,10 +56,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "cloudinary_storage",
     "django.contrib.staticfiles",
     "lab_core",
-    "cloudinary"
 ]
 
 AUTH_USER_MODEL = "lab_core.User"
@@ -138,18 +136,9 @@ def _url_with_trailing_slash(url: str, default: str) -> str:
     u = (url or default).strip()
     return u if u.endswith("/") else u + "/"
 
-# --- Cloudinary & Static/Media ---
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
-}
-
-# إذا وجدت بيانات Cloudinary، سيتم استخدامها للميديا
-if CLOUDINARY_STORAGE['CLOUD_NAME']:
-    _media_backend = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
-else:
-    _media_backend = 'django.core.files.storage.FileSystemStorage'
+# --- Media & Static ---
+# Use the local filesystem for uploaded media so files are read from MEDIA_ROOT.
+_media_backend = 'django.core.files.storage.FileSystemStorage'
 
 # STATIC_URL = _url_with_trailing_slash(os.getenv("STATIC_URL"), "static/")
 # STATIC_ROOT = BASE_DIR / _env_str("STATIC_ROOT_DIR", "staticfiles")

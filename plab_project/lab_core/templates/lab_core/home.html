@@ -1,297 +1,321 @@
 {% extends "lab_core/base.html" %}
-{% load i18n %}
-
+{% load i18n static %}
 {% block extra_head %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<style>
-    .plab-home-hero-accent {
-        border-left: 4px solid var(--plab-primary);
-        padding-left: 1rem;
-    }
-    [dir="rtl"] .plab-home-hero-accent {
-        border-left: 0;
-        border-right: 4px solid var(--plab-primary);
-        padding-left: 0;
-        padding-right: 1rem;
-    }
-    .plab-services-section .carousel {
-        border-radius: 1.25rem;
-        overflow: hidden;
-        box-shadow: 0 16px 40px rgba(0, 86, 179, 0.15);
-    }
-    .plab-service-slide {
-        min-height: 280px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2.5rem 1.5rem;
-        background: linear-gradient(135deg, var(--plab-dark) 0%, var(--plab-primary) 50%, #1a8ee6 100%);
-        color: #fff;
-    }
-    .plab-service-slide.alt {
-        background: linear-gradient(135deg, #0a4a8c 0%, #0056b3 45%, #3d9ae8 100%);
-    }
-    .plab-service-slide.soft {
-        background: linear-gradient(135deg, #e8f2fc 0%, #d6eaff 50%, #cfe2ff 100%);
-        color: #12324d;
-    }
-    .plab-service-slide .service-icon-wrap {
-        width: 4rem;
-        height: 4rem;
-        border-radius: 1rem;
-        background: rgba(255, 255, 255, 0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.75rem;
-        margin-bottom: 1rem;
-    }
-    .plab-service-slide.soft .service-icon-wrap {
-        background: rgba(0, 86, 179, 0.12);
-        color: var(--plab-primary);
-    }
-    .plab-service-slide h3 {
-        font-weight: 700;
-        font-size: 1.35rem;
-    }
-    .plab-service-slide p {
-        opacity: 0.95;
-        max-width: 32rem;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .plab-service-slide.soft p {
-        opacity: 0.88;
-    }
-    .plab-services-section .carousel-indicators [data-bs-target] {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.55);
-    }
-    .plab-services-section .carousel-indicators .active {
-        background-color: #fff;
-    }
-    .plab-comfort-card {
-        border-radius: 1rem;
-        border: 1px solid #d6e6ff;
-        background: var(--plab-surface);
-        height: 100%;
-        padding: 1.5rem;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .plab-comfort-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 14px 32px rgba(0, 86, 179, 0.12);
-    }
-    .plab-comfort-icon {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 0.85rem;
-        background: linear-gradient(135deg, #e8f2fc, #d6eaff);
-        color: var(--plab-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.35rem;
-        margin-bottom: 1rem;
-    }
-    .plab-home-cta {
-        border-radius: 1rem;
-        background: linear-gradient(90deg, #e8f2fc 0%, #f5f9ff 100%);
-        border: 1px solid #c8ddf5;
-    }
-</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
-
 {% block title %}{% trans "Health Advice" %}{% endblock %}
-
 {% block content %}
 <section class="mb-4">
-    <div class="card plab-card">
-        <div class="card-body p-4 p-md-5">
-            <div class="plab-home-hero-accent">
-                <h1 class="text-primary mb-2">{% trans "PLAB Health Advice" %}</h1>
-                <p class="text-muted mb-4 mb-md-0">
-                    {% trans "Trusted laboratory insights and preventive care tips for you and your family." %}
-                </p>
-            </div>
-            <div class="mt-4 d-flex flex-wrap gap-2">
-                {% if request.user.is_authenticated %}
-                    <a href="{% url 'lab_core:dashboard' %}" class="btn btn-primary">{% trans "Go to Dashboard" %}</a>
-                {% else %}
-                    <a href="{% url 'lab_core:login' %}" class="btn btn-primary">{% trans "Join Us / Login" %}</a>
-                {% endif %}
-                <a href="{% url 'lab_core:about' %}" class="btn btn-outline-primary">{% trans "About Us" %}</a>
-            </div>
-        </div>
+  <div class="card plab-card">
+    <div class="card-body p-4 p-md-5">
+      <div class="plab-home-hero-accent">
+        <h1 class="text-primary mb-2">{% trans "PLAB Health Advice" %}</h1>
+        <p class="text-muted mb-4 mb-md-0">
+          {% trans "Trusted laboratory insights and preventive care tips for you and your family." %}
+        </p>
+      </div>
+      <div class="mt-4 d-flex flex-wrap gap-2">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'lab_core:dashboard' %}" class="btn btn-primary"
+          >{% trans "Go to Dashboard" %}</a
+        >
+        {% else %}
+        <a href="{% url 'lab_core:login' %}" class="btn btn-primary"
+          >{% trans "Join Us / Login" %}</a
+        >
+        {% endif %}
+        <a href="{% url 'lab_core:about' %}" class="btn btn-outline-primary"
+          >{% trans "About Us" %}</a
+        >
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="plab-services-section mb-5">
-    <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-3">
-        <div>
-            <h4 class="text-primary mb-1">{% trans "Our services" %}</h4>
-            <p class="text-muted small mb-0">{% trans "Comfortable care, clear communication, and modern lab support." %}</p>
-        </div>
+  <div
+    class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-3"
+  >
+    <div>
+      <h4 class="text-primary mb-1">{% trans "Our services" %}</h4>
+      <p class="text-muted small mb-0">
+        {% trans "Comfortable care, clear communication, and modern lab support." %}
+      </p>
     </div>
-    <div id="plabServicesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#plabServicesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="{% trans 'Slide' %} 1"></button>
-            <button type="button" data-bs-target="#plabServicesCarousel" data-bs-slide-to="1" aria-label="{% trans 'Slide' %} 2"></button>
-            <button type="button" data-bs-target="#plabServicesCarousel" data-bs-slide-to="2" aria-label="{% trans 'Slide' %} 3"></button>
-            <button type="button" data-bs-target="#plabServicesCarousel" data-bs-slide-to="3" aria-label="{% trans 'Slide' %} 4"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="plab-service-slide text-center">
-                    <div class="px-3">
-                        <div class="service-icon-wrap mx-auto"><i class="bi bi-house-heart"></i></div>
-                        <h3 class="mb-3">{% trans "Home sample collection" %}</h3>
-                        <p class="mb-0 small">{% trans "Book a visit and have samples taken at home by trained staff—hygienic, respectful, and convenient for you and your family." %}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="plab-service-slide alt text-center">
-                    <div class="px-3">
-                        <div class="service-icon-wrap mx-auto"><i class="bi bi-laptop"></i></div>
-                        <h3 class="mb-3">{% trans "Online results portal" %}</h3>
-                        <p class="mb-0 small">{% trans "Follow each test with clear statuses and download published reports securely when they are ready." %}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="plab-service-slide text-center">
-                    <div class="px-3">
-                        <div class="service-icon-wrap mx-auto"><i class="bi bi-heart-pulse"></i></div>
-                        <h3 class="mb-3">{% trans "Wide range of tests" %}</h3>
-                        <p class="mb-0 small">{% trans "From routine panels to specialized investigations—guided by quality standards and your clinician's requests." %}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="plab-service-slide soft text-center">
-                    <div class="px-3">
-                        <div class="service-icon-wrap mx-auto"><i class="bi bi-shield-check"></i></div>
-                        <h3 class="mb-3">{% trans "Comfort & privacy" %}</h3>
-                        <p class="mb-0 small">{% trans "A calm experience with discreet handling of your data and practical reminders so you always know what to expect next." %}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#plabServicesCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{% trans "Previous" %}</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#plabServicesCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{% trans "Next" %}</span>
-        </button>
+  </div>
+  <div
+    id="plabServicesCarousel"
+    class="carousel slide"
+    data-bs-ride="carousel"
+    data-bs-interval="6000"
+  >
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#plabServicesCarousel"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="{% trans 'Slide' %} 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#plabServicesCarousel"
+        data-bs-slide-to="1"
+        aria-label="{% trans 'Slide' %} 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#plabServicesCarousel"
+        data-bs-slide-to="2"
+        aria-label="{% trans 'Slide' %} 3"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#plabServicesCarousel"
+        data-bs-slide-to="3"
+        aria-label="{% trans 'Slide' %} 4"
+      ></button>
     </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="plab-service-slide text-center">
+          <div class="px-3">
+            <div class="service-icon-wrap mx-auto">
+              <i class="bi bi-house-heart"></i>
+            </div>
+            <h3 class="mb-3">{% trans "Home sample collection" %}</h3>
+            <p class="mb-0 small">
+              {% trans "Book a visit and have samples taken at home by trained staff—hygienic, respectful, and convenient for you and your family." %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="plab-service-slide alt text-center">
+          <div class="px-3">
+            <div class="service-icon-wrap mx-auto">
+              <i class="bi bi-laptop"></i>
+            </div>
+            <h3 class="mb-3">{% trans "Online results portal" %}</h3>
+            <p class="mb-0 small">
+              {% trans "Follow each test with clear statuses and download published reports securely when they are ready." %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="plab-service-slide text-center">
+          <div class="px-3">
+            <div class="service-icon-wrap mx-auto">
+              <i class="bi bi-heart-pulse"></i>
+            </div>
+            <h3 class="mb-3">{% trans "Wide range of tests" %}</h3>
+            <p class="mb-0 small">
+              {% trans "From routine panels to specialized investigations—guided by quality standards and your clinician's requests." %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="plab-service-slide soft text-center">
+          <div class="px-3">
+            <div class="service-icon-wrap mx-auto">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <h3 class="mb-3">{% trans "Comfort & privacy" %}</h3>
+            <p class="mb-0 small">
+              {% trans "A calm experience with discreet handling of your data and practical reminders so you always know what to expect next." %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#plabServicesCarousel"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">{% trans "Previous" %}</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#plabServicesCarousel"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">{% trans "Next" %}</span>
+    </button>
+  </div>
 </section>
 
 <section class="mb-5">
-    <h4 class="text-primary mb-3">{% trans "Why patients choose PLAB" %}</h4>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="plab-comfort-card">
-                <div class="plab-comfort-icon"><i class="bi bi-clock-history"></i></div>
-                <h5 class="text-primary mb-2">{% trans "Clear timelines" %}</h5>
-                <p class="text-muted small mb-0">{% trans "Expected delivery hints and status updates reduce uncertainty while you wait for results." %}</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="plab-comfort-card">
-                <div class="plab-comfort-icon"><i class="bi bi-chat-dots"></i></div>
-                <h5 class="text-primary mb-2">{% trans "Simple communication" %}</h5>
-                <p class="text-muted small mb-0">{% trans "Lab announcements and health advice help you stay informed between visits." %}</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="plab-comfort-card">
-                <div class="plab-comfort-icon"><i class="bi bi-person-check"></i></div>
-                <h5 class="text-primary mb-2">{% trans "Your profile in one place" %}</h5>
-                <p class="text-muted small mb-0">{% trans "Update your details and manage your account securely from the patient portal." %}</p>
-            </div>
-        </div>
+  <h4 class="text-primary mb-3">{% trans "Why patients choose PLAB" %}</h4>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="plab-comfort-card">
+        <div class="plab-comfort-icon"><i class="bi bi-clock-history"></i></div>
+        <h5 class="text-primary mb-2">{% trans "Clear timelines" %}</h5>
+        <p class="text-muted small mb-0">
+          {% trans "Expected delivery hints and status updates reduce uncertainty while you wait for results." %}
+        </p>
+      </div>
     </div>
+    <div class="col-md-4">
+      <div class="plab-comfort-card">
+        <div class="plab-comfort-icon"><i class="bi bi-chat-dots"></i></div>
+        <h5 class="text-primary mb-2">{% trans "Simple communication" %}</h5>
+        <p class="text-muted small mb-0">
+          {% trans "Lab announcements and health advice help you stay informed between visits." %}
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="plab-comfort-card">
+        <div class="plab-comfort-icon"><i class="bi bi-person-check"></i></div>
+        <h5 class="text-primary mb-2">
+          {% trans "Your profile in one place" %}
+        </h5>
+        <p class="text-muted small mb-0">
+          {% trans "Update your details and manage your account securely from the patient portal." %}
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="mb-5">
-    <div class="plab-home-cta p-4 p-md-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
-        <div>
-            <h5 class="text-primary mb-1">{% trans "Need to register or sign in?" %}</h5>
-            <p class="text-muted small mb-0">{% trans "Access your dashboard, track tests, and download published PDFs when available." %}</p>
-        </div>
-        <div class="d-flex flex-wrap gap-2">
-            {% if request.user.is_authenticated %}
-                <a href="{% url 'lab_core:dashboard' %}" class="btn btn-primary btn-sm">{% trans "Go to Dashboard" %}</a>
-            {% else %}
-                <a href="{% url 'lab_core:signup' %}" class="btn btn-primary btn-sm">{% trans "Create an account" %}</a>
-                <a href="{% url 'lab_core:login' %}" class="btn btn-outline-primary btn-sm">{% trans "Sign In" %}</a>
-            {% endif %}
-        </div>
+  <div
+    class="plab-home-cta p-4 p-md-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3"
+  >
+    <div>
+      <h5 class="text-primary mb-1">
+        {% trans "Need to register or sign in?" %}
+      </h5>
+      <p class="text-muted small mb-0">
+        {% trans "Access your dashboard, track tests, and download published PDFs when available." %}
+      </p>
     </div>
+    <div class="d-flex flex-wrap gap-2">
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'lab_core:dashboard' %}" class="btn btn-primary btn-sm"
+        >{% trans "Go to Dashboard" %}</a
+      >
+      {% else %}
+      <a href="{% url 'lab_core:signup' %}" class="btn btn-primary btn-sm"
+        >{% trans "Create an account" %}</a
+      >
+      <a
+        href="{% url 'lab_core:login' %}"
+        class="btn btn-outline-primary btn-sm"
+        >{% trans "Sign In" %}</a
+      >
+      {% endif %}
+    </div>
+  </div>
 </section>
 
 <section>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="text-primary mb-0">{% trans "Latest Posts" %}</h4>
-    </div>
-    <div class="row g-4">
-        {% for post in posts %}
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 plab-card">
-                    {% if post.image %}
-                        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" style="object-fit: cover; height: 220px;">
-                    {% endif %}
-                    <div class="card-body">
-                        <div class="d-flex align-items-start justify-content-between gap-2 mb-1">
-                            <h5 class="card-title text-primary mb-0">{{ post.title }}</h5>
-                            {% if post.is_pinned %}
-                                <span class="badge text-bg-warning text-dark flex-shrink-0">{% trans "Pinned" %}</span>
-                            {% endif %}
-                        </div>
-                        <p class="small text-muted mb-2">{{ post.created_at|date:"M d, Y" }}</p>
-                        {% if post.description %}
-                            <p class="card-text">{{ post.description|truncatewords:22 }}</p>
-                        {% else %}
-                            <p class="card-text">{{ post.content|truncatewords:22 }}</p>
-                        {% endif %}
-                        <p class="small text-muted mb-3">
-                            {% trans "Posted by:" %}
-                            {% if post.posted_by %}
-                                {{ post.posted_by.full_name }}
-                            {% else %}
-                                {% trans "Admin" %}
-                            {% endif %}
-                        </p>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <a href="{% url 'lab_core:post_detail' post.pk %}" class="btn btn-outline-primary btn-sm">
-                                {% trans "Read Article" %}
-                            </a>
-                            <div class="d-flex align-items-center gap-2">
-                                {% if request.user.is_authenticated %}
-                                    <form method="post" action="{% url 'lab_core:toggle_heart' post.pk %}" class="m-0">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="next" value="{{ request.path }}">
-                                        <button type="submit" class="btn btn-sm btn-light border">{% trans "Heart" %}</button>
-                                    </form>
-                                {% else %}
-                                    <a href="{% url 'lab_core:login' %}" class="btn btn-sm btn-light border">{% trans "Heart" %}</a>
-                                {% endif %}
-                                <span class="small text-muted">&#10084; {{ post.hearts_total|default:0 }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="text-primary mb-0">{% trans "Latest Posts" %}</h4>
+  </div>
+  <div class="row g-4">
+    {% for post in posts %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 plab-card">
+        {% if post.image %}
+        <img
+          src="{{ post.image.url }}"
+          class="card-img-top post-image"
+          alt="{{ post.title }}"
+        />
+        {% endif %}
+        <div class="card-body">
+          <div
+            class="d-flex align-items-start justify-content-between gap-2 mb-1"
+          >
+            <h5 class="card-title text-primary mb-0">{{ post.title }}</h5>
+            {% if post.is_pinned %}
+            <span class="badge text-bg-warning text-dark flex-shrink-0"
+              >{% trans "Pinned" %}</span
+            >
+            {% endif %}
+          </div>
+          <p class="small text-muted mb-2">
+            {{ post.created_at|date:"M d, Y" }}
+          </p>
+          {% if post.description %}
+          <p class="card-text">{{ post.description|truncatewords:22 }}</p>
+          {% else %}
+          <p class="card-text">{{ post.content|truncatewords:22 }}</p>
+          {% endif %}
+          <p class="small text-muted mb-3">
+            {% trans "Posted by:" %}
+            {% if post.posted_by %}
+            {{ post.posted_by.full_name }}
+            {% else %}
+            {% trans "Admin" %}
+            {% endif %}
+          </p>
+          <div class="d-flex align-items-center justify-content-between">
+            <a
+              href="{{ post.get_absolute_url }}"
+              class="btn btn-outline-primary btn-sm"
+            >
+              {% trans "Read Article" %}
+            </a>
+            {% comment %}
+            <a
+              href="{% url 'lab_core:post_detail' post.pk %}"
+              class="btn btn-outline-primary btn-sm"
+            >
+              {% trans "Read Article" %}
+            </a>
+            {% endcomment %}
+            <div class="d-flex align-items-center gap-2">
+              {% if request.user.is_authenticated %}
+              <button
+                type="button"
+                class="btn btn-sm btn-light border heart-toggle-btn"
+                data-url="{% url 'lab_core:like_post_ajax' post.pk %}"
+                data-text-heart="{% trans 'Heart' %}"
+                data-text-unheart="{% trans 'Unheart' %}"
+              >
+                <span class="heart-btn-text"> {% trans "Heart" %} </span>
+              </button>
+              {% else %}
+              <a
+                href="{% url 'lab_core:login' %}"
+                class="btn btn-sm btn-light border"
+                >{% trans "Heart" %}</a
+              >
+              {% endif %}
+
+              <span class="small text-muted">
+                &#10084;
+                <span class="heart-count-display"
+                  >{{ post.hearts_total|default:0 }}</span
+                >
+              </span>
             </div>
-        {% empty %}
-            <div class="col-12">
-                <div class="alert alert-info mb-0">{% trans "No health advice posts available yet." %}</div>
-            </div>
-        {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
+    {% empty %}
+    <div class="col-12">
+      <div class="alert alert-info mb-0">
+        {% trans "No health advice posts available yet." %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </section>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

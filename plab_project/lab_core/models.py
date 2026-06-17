@@ -3,7 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 from django.utils import timezone
 from datetime import date
 from django.utils.translation import gettext_lazy as _
-
+from django.urls import reverse
+from django.utils.text import slugify
 
 class UserManager(BaseUserManager):
     def create_user(self, phone_number, full_name, password=None, **extra_fields):
@@ -142,6 +143,7 @@ def blog_image_upload_path(instance, filename):
 
 class BlogPost(models.Model):
     title = models.CharField(_("Title"), max_length=255)
+    slug = models.SlugField(unique=True, allow_unicode=True, null=True)
     description = models.TextField(_("Description"), blank=True)
     content = models.TextField(_("Content"))
     # Pinned posts appear first on the health blog for visibility.
@@ -159,6 +161,9 @@ class BlogPost(models.Model):
     hearts = models.ManyToManyField(User, related_name="hearted_posts", blank=True, verbose_name=_("Hearts"))
     created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
 
+    def get_absolute_url(self):
+        return reverse("lab_core:post_detail", kwargs={"slug": self.slug})
+    
     class Meta:
         verbose_name = _("Blog post")
         verbose_name_plural = _("Blog posts")

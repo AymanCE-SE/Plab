@@ -159,7 +159,8 @@ class BlogPostAdmin(admin.ModelAdmin):
     list_filter = ("is_pinned", "created_at")
     list_editable = ("is_pinned",)
     autocomplete_fields = ("posted_by",)
-
+    prepopulated_fields = {'slug': ('title',)}
+    
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
         return queryset.annotate(total_hearts=Count("hearts"))
