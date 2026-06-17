@@ -1,3 +1,178 @@
+.plab-hero-container {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 86, 179, 0.18);
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 2rem;
+  }
+  
+  [dir="rtl"] .plab-hero-container {
+    justify-content: flex-end;
+  }
+  
+  .plab-hero-image-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+  }
+  
+  .plab-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  
+  .plab-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(10, 25, 60, 0.75) 0%, rgba(0, 86, 179, 0.5) 40%, rgba(26, 142, 230, 0.2) 100%);
+    border-radius: 1.5rem;
+  }
+  
+  [dir="rtl"] .plab-hero-overlay {
+    background: linear-gradient(270deg, rgba(10, 25, 60, 0.75) 0%, rgba(0, 86, 179, 0.5) 40%, rgba(26, 142, 230, 0.2) 100%);
+  }
+  
+  .plab-hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  [dir="rtl"] .plab-hero-content {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  .plab-hero-text {
+    color: #fff;
+  }
+  
+  .plab-hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .plab-hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.6;
+    margin: 0;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .plab-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  
+  .plab-hero-buttons .btn {
+    font-weight: 600;
+    padding: 0.875rem 2rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+  }
+  
+  .plab-hero-buttons .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .plab-hero-buttons .btn:hover::before {
+    opacity: 1;
+    animation: shimmer 0.6s ease;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .plab-hero-buttons .btn-primary {
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+  }
+  
+  .plab-hero-buttons .btn-primary:hover {
+    background: linear-gradient(135deg, #004085 0%, #003563 100%);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 86, 179, 0.4);
+  }
+  
+  .plab-hero-buttons .btn-primary:active {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 86, 179, 0.35);
+  }
+  
+  .plab-hero-buttons .btn-outline-light {
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    backdrop-filter: blur(10px);
+  }
+  
+  .plab-hero-buttons .btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.9);
+    color: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(255, 255, 255, 0.25);
+  }
+  
+  .plab-hero-buttons .btn-outline-light:active {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .plab-hero-container {
+      min-height: 300px;
+      padding: 1.5rem 1rem;
+    }
+    
+    .plab-hero-buttons {
+      gap: 0.75rem;
+    }
+    
+    .plab-hero-buttons .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.9rem;
+      border-radius: 0.625rem;
+    }
+  }
 .plab-home-hero-accent {
     border-left: 4px solid var(--plab-primary);
     padding-left: 1rem;

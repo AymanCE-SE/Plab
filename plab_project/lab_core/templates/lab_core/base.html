@@ -22,108 +22,22 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     {% endif %}
 
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block extra_head %}{% endblock %}
-
-    <style>
-        :root {
-            --plab-primary: #0056b3; /* PLAB Blue */
-            --plab-dark: #003e85;
-            --plab-bg: #f5f9ff;
-            --plab-surface: #ffffff;
-        }
-        body {
-            background: var(--plab-bg);
-            color: #12324d;
-        }
-        body.plab-layout {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .plab-main {
-            flex: 1 0 auto;
-        }
-        .plab-footer {
-            flex-shrink: 0;
-            background: linear-gradient(180deg, var(--plab-dark) 0%, #001f42 100%);
-            color: rgba(255, 255, 255, 0.88);
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
-            margin-top: 2rem;
-        }
-        .plab-footer a {
-            color: rgba(255, 255, 255, 0.78);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .plab-footer a:hover,
-        .plab-footer a:focus {
-            color: #fff;
-            text-decoration: underline;
-        }
-        .plab-footer .plab-footer-brand {
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            color: #fff;
-        }
-        .plab-footer .plab-footer-tagline {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.65);
-            max-width: 22rem;
-        }
-        .navbar-brand {
-            font-weight: 700;
-            letter-spacing: 0.4px;
-        }
-        .text-primary {
-            color: var(--plab-primary) !important;
-        }
-        .btn-primary {
-            background-color: var(--plab-primary);
-            border-color: var(--plab-primary);
-        }
-        .btn-primary:hover,
-        .btn-primary:focus {
-            background-color: var(--plab-dark);
-            border-color: var(--plab-dark);
-        }
-        .table-primary {
-            --bs-table-bg: #e7f1ff;
-        }
-        .plab-card {
-            background: var(--plab-surface);
-            border: 1px solid #d6e6ff;
-            border-radius: 1rem;
-            box-shadow: 0 10px 24px rgba(0, 86, 179, 0.12);
-        }
-        .navbar .nav-link {
-            color: rgba(255, 255, 255, 0.92);
-            font-weight: 500;
-        }
-        .navbar .nav-link:hover,
-        .navbar .nav-link:focus {
-            color: #ffffff;
-        }
-        .navbar .btn-outline-light {
-            border-radius: 0.7rem;
-        }
-        /* Lab announcements — clear, calm, medical tone */
-        .plab-announcement {
-            border: 1px solid #b8d4f0;
-            border-left: 4px solid var(--plab-primary);
-            border-radius: 0.75rem;
-            background: linear-gradient(135deg, #e8f2fc 0%, #f5f9ff 100%);
-            box-shadow: 0 4px 14px rgba(0, 86, 179, 0.08);
-        }
-        .plab-announcement .plab-announcement-title {
-            font-weight: 600;
-            color: var(--plab-dark);
-        }
-    </style>
 </head>
 <body class="plab-layout">
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--plab-dark);">
+    <nav class="navbar navbar-expand-lg navbar-dark plab-navbar" style="background-color: var(--plab-dark);">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'lab_core:home' %}">{% trans "PLAB" %}</a>
+            <a class="navbar-brand plab-navbar-brand" href="{% url 'lab_core:home' %}">
+                <img src="{% static 'images/logo.svg' %}" alt="PLAB logo" class="plab-navbar-logo" />
+                <span class="plab-brand-text">
+                    {% if LANGUAGE_BIDI %}
+                        بى لاب
+                    {% else %}
+                        P LAB
+                    {% endif %}
+                </span>
+            </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#plabNavbar"
                     aria-controls="plabNavbar" aria-expanded="false" aria-label="Toggle navigation">

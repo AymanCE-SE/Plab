@@ -1,0 +1,40 @@
+{% load i18n static %}
+<section class="mb-4">
+  <div class="plab-hero-container">
+    <div class="plab-hero-image-wrapper">
+      <img 
+        src="{% static 'images/hero-img.jpg' %}" 
+        alt="{% trans 'Health Advice' %}" 
+        class="plab-hero-image"
+        loading="lazy"
+      />
+      <div class="plab-hero-overlay"></div>
+    </div>
+    
+    <div class="plab-hero-content">
+      {% comment %} 
+      <div class="plab-hero-text">
+        <h1 class="plab-hero-title">{% trans "PLAB Health Advice" %}</h1>
+        <p class="plab-hero-subtitle">
+          {% trans "Trusted laboratory insights and preventive care tips for you and your family." %}
+        </p>
+      </div>
+      {% endcomment %}
+      
+      <div class="plab-hero-buttons">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'lab_core:dashboard' %}" class="btn btn-primary btn-lg"
+          >{% trans "Go to Dashboard" %}</a
+        >
+        {% else %}
+        <a href="{% url 'lab_core:login' %}" class="btn btn-primary btn-lg"
+          >{% trans "Join Us / Login" %}</a
+        >
+        {% endif %}
+        <a href="{% url 'lab_core:about' %}" class="btn btn-outline-light btn-lg"
+          >{% trans "About Us" %}</a
+        >
+      </div>
+    </div>
+  </div>
+</section>

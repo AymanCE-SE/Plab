@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+:root {
+    --plab-primary: #0056b3; /* PLAB Blue */
+    --plab-dark: #003e85;
+    --plab-bg: #f5f9ff;
+    --plab-surface: #ffffff;
+}
+
+body {
+    background: var(--plab-bg);
+    color: #12324d;
+}
+
+body.plab-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.plab-main {
+    flex: 1 0 auto;
+}
+
+.plab-footer {
+    flex-shrink: 0;
+    background: linear-gradient(180deg, var(--plab-dark) 0%, #001f42 100%);
+    color: rgba(255, 255, 255, 0.88);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-top: 2rem;
+}
+
+.plab-footer a {
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.plab-footer a:hover,
+.plab-footer a:focus {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.plab-footer .plab-footer-brand {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #fff;
+}
+
+.plab-footer .plab-footer-tagline {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 22rem;
+}
+
+.plab-navbar {
+    padding: 1rem 0;
+}
+
+.plab-navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 0.5rem 0;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.plab-navbar-logo {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 0.85rem;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    padding: 0.6rem;
+    object-fit: contain;
+}
+
+.plab-brand-text {
+    color: #fff;
+    font-size: 1.25rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* Arabic brand text with Cairo font */
+[dir="rtl"] .plab-brand-text {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: none;
+}
+
+/* LTR: logo on left, text on right (default) */
+[dir="ltr"] .plab-navbar-brand {
+    flex-direction: row;
+}
+
+/* RTL: logo on left, text on right */
+[dir="rtl"] .plab-navbar-brand {
+    flex-direction: row;
+}
+
+.navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 0.25rem 0;
+}
+
+.navbar-brand span {
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.text-primary {
+    color: var(--plab-primary) !important;
+}
+
+.btn-primary {
+    background-color: var(--plab-primary);
+    border-color: var(--plab-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--plab-dark);
+    border-color: var(--plab-dark);
+}
+
+.table-primary {
+    --bs-table-bg: #e7f1ff;
+}
+
+.plab-card {
+    background: var(--plab-surface);
+    border: 1px solid #d6e6ff;
+    border-radius: 1rem;
+    box-shadow: 0 10px 24px rgba(0, 86, 179, 0.12);
+}
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: #ffffff;
+}
+
+.navbar .btn-outline-light {
+    border-radius: 0.7rem;
+}
+
+/* Spacing between navbar brand and nav items */
+.navbar-nav {
+    margin-left: auto;
+    gap: 0.5rem;
+}
+
+[dir="rtl"] .navbar-nav {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Responsive navbar adjustments */
+@media (max-width: 768px) {
+    .plab-navbar {
+        padding: 0.75rem 0;
+    }
+
+    .plab-navbar-logo {
+        width: 40px;
+        height: 40px;
+        padding: 0.5rem;
+    }
+
+    .plab-brand-text {
+        font-size: 1.1rem;
+    }
+
+    .plab-navbar-brand {
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .plab-navbar-logo {
+        width: 36px;
+        height: 36px;
+        padding: 0.4rem;
+    }
+
+    .plab-brand-text {
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+    }
+
+    .plab-navbar-brand {
+        gap: 0.5rem;
+    }
+}
+
+/* Lab announcements — clear, calm, medical tone */
+.plab-announcement {
+    border: 1px solid #b8d4f0;
+    border-left: 4px solid var(--plab-primary);
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #e8f2fc 0%, #f5f9ff 100%);
+    box-shadow: 0 4px 14px rgba(0, 86, 179, 0.08);
+}
+
+.plab-announcement .plab-announcement-title {
+    font-weight: 600;
+    color: var(--plab-dark);
+}
