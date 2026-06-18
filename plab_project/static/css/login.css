@@ -1,0 +1,102 @@
+:root {
+    --login-card-bg: rgba(255, 255, 255, 0.96);
+    --login-card-border: rgba(3, 72, 146, 0.12);
+    --login-shadow: 0 20px 48px rgba(0, 88, 171, 0.14);
+}
+
+.login-page {
+    min-height: calc(100vh - 9.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+}
+
+.login-page .plab-card {
+    background: var(--login-card-bg);
+    border: 1px solid var(--login-card-border);
+    border-radius: 1.5rem;
+    box-shadow: var(--login-shadow);
+}
+
+.login-page .card-body {
+    padding: 3rem 2.5rem;
+}
+
+.login-page h3 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.login-page p.lead {
+    font-size: 0.98rem;
+    color: #64748b;
+}
+
+.login-page .form-label {
+    font-weight: 600;
+}
+
+.login-page .form-control {
+    border-radius: 0.85rem;
+    border-color: #d6e6ff;
+    background: #f8fbff;
+    box-shadow: inset 0 0 0 1px rgba(48, 108, 180, 0.04);
+}
+
+.login-page .form-control:focus {
+    border-color: rgba(0, 86, 179, 0.35);
+    box-shadow: 0 0 0 0.15rem rgba(0, 86, 179, 0.12);
+}
+
+.login-page .btn-primary {
+    border-radius: 0.85rem;
+    padding: 0.85rem 1rem;
+}
+
+.login-page .login-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 1rem 0 0.75rem;
+}
+
+.login-page .btn-forgot-password {
+    color: var(--plab-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-page .btn-forgot-password:hover,
+.login-page .btn-forgot-password:focus {
+    text-decoration: underline;
+}
+
+.login-page .login-footer {
+    text-align: center;
+    margin-top: 1.25rem;
+    color: #6c757d;
+}
+
+.login-page .login-footer a {
+    color: var(--plab-primary);
+    font-weight: 600;
+}
+
+.login-page .login-footer a:hover,
+.login-page .login-footer a:focus {
+    text-decoration: none;
+}
+
+@media (max-width: 576px) {
+    .login-page .card-body {
+        padding: 2rem 1.5rem;
+    }
+
+    .login-page .login-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

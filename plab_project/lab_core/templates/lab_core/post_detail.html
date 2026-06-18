@@ -42,11 +42,11 @@
                         <button type="button" 
                                 id="heart-toggle-btn" 
                                 data-url="{% url 'lab_core:like_post_ajax' post.pk %}"
-                                data-text-heart="{% trans 'Heart' %}"
-                                data-text-unheart="{% trans 'Unheart' %}"
+                                data-text-heart="{% trans 'Like' %}"
+                                data-text-unheart="{% trans 'Unlike' %}"
                                 class="btn btn-primary btn-sm m-0">
                             <span id="heart-btn-text">
-                                {% if has_hearted %}{% trans "Unheart" %}{% else %}{% trans "Heart" %}{% endif %}
+                                {% if has_hearted %}{% trans "Unlike" %}{% else %}{% trans "Like" %}{% endif %}
                             </span>
                         </button>
                     {% else %}
@@ -54,7 +54,7 @@
                     {% endif %}
                     
                     <span class="small text-muted m-0">
-                        &#10084; <span id="heart-count-display">{{ post.hearts_total|default:0 }}</span> {% trans "hearts" %}
+                        &#10084; <span id="heart-count-display">{{ post.hearts_total|default:0 }}</span> {% trans "Likes" %}
                     </span>
                 </div>
                 

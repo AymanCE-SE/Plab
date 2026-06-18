@@ -1,15 +1,19 @@
 {% extends "lab_core/base.html" %}
-{% load i18n %}
+{% load i18n static %}
 
-{% block title %}{% trans "Patient Sign Up" %}{% endblock %}
+{% block title %}{% trans "Sign Up" %}{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center mt-3">
-    <div class="col-lg-7">
+<div class="login-page">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6">
         <div class="card plab-card">
-            <div class="card-body p-4 p-md-5">
-                <h3 class="text-primary mb-1">{% trans "Create Patient Account" %}</h3>
-                <p class="text-muted mb-4">{% trans "Join PLAB to securely access your laboratory reports." %}</p>
+            <div class="card-body">
+                <h3 class="text-primary mb-2">{% trans "Create Account" %}</h3>
+                <p class="lead mb-4">{% trans "Join PLAB to securely access your laboratory reports." %}</p>
 
                 <form method="post" novalidate>
                     {% csrf_token %}

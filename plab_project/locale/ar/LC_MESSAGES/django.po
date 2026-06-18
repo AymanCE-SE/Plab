@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLAB 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-18 22:55+0300\n"
+"POT-Creation-Date: 2026-06-19 00:12+0300\n"
 "PO-Revision-Date: 2026-06-18 00:00+0000\n"
 "Last-Translator: PLAB Team <you@example.com>\n"
 "Language-Team: Arabic <your-team@example.com>\n"
@@ -96,7 +96,7 @@ msgid "Hearts"
 msgstr "الإعجابات"
 
 #: .\lab_core\forms.py:12 .\lab_core\templates\lab_core\dashboard.html:23
-#: .\lab_core\templates\lab_core\signup.html:23
+#: .\lab_core\templates\lab_core\signup.html:27
 msgid "Full Name"
 msgstr "الاسم الكامل"
 
@@ -106,13 +106,13 @@ msgstr "اسمك الكامل"
 
 #: .\lab_core\forms.py:19 .\lab_core\forms.py:22 .\lab_core\forms.py:58
 #: .\lab_core\models.py:74 .\lab_core\templates\lab_core\dashboard.html:27
-#: .\lab_core\templates\lab_core\signup.html:33
+#: .\lab_core\templates\lab_core\signup.html:37
 msgid "Age"
 msgstr "العمر"
 
 #: .\lab_core\forms.py:25 .\lab_core\forms.py:63 .\lab_core\models.py:75
 #: .\lab_core\templates\lab_core\dashboard.html:33
-#: .\lab_core\templates\lab_core\signup.html:38
+#: .\lab_core\templates\lab_core\signup.html:42
 msgid "Gender"
 msgstr "النوع"
 
@@ -292,7 +292,7 @@ msgstr "إعلانات المختبر"
 #: .\lab_core\templates\lab_core\about.html:8
 #: .\lab_core\templates\lab_core\base.html:97
 #: .\lab_core\templates\lab_core\base.html:180
-#: .\lab_core\templates\lab_core\hero.html:34
+#: .\lab_core\templates\lab_core\hero.html:38
 msgid "About Us"
 msgstr "من نحن"
 
@@ -368,13 +368,13 @@ msgstr "لوحة التحكم"
 
 #: .\lab_core\templates\lab_core\base.html:191
 #: .\lab_core\templates\lab_core\home.html:203
-#: .\lab_core\templates\lab_core\login.html:39
+#: .\lab_core\templates\lab_core\login.html:44
 msgid "Sign In"
 msgstr "تسجيل الدخول"
 
 #: .\lab_core\templates\lab_core\base.html:194
 #: .\lab_core\templates\lab_core\home.html:198
-#: .\lab_core\templates\lab_core\login.html:44
+#: .\lab_core\templates\lab_core\login.html:51
 msgid "Create an account"
 msgstr "إنشاء حساب"
 
@@ -441,27 +441,27 @@ msgstr "لا توجد فحوصات"
 msgid "Health Advice"
 msgstr "نصائح صحية"
 
-#: .\lab_core\templates\lab_core\hero.html:16
+#: .\lab_core\templates\lab_core\hero.html:19
 msgid "Trusted lab guidance"
 msgstr "دليلك الموثوق للتحاليل"
 
-#: .\lab_core\templates\lab_core\hero.html:17
-#| msgid "PLAB Lab"
+#: .\lab_core\templates\lab_core\hero.html:21
 msgid "P Lab"
 msgstr "معمل بي لاب"
 
-#: .\lab_core\templates\lab_core\hero.html:19
+#: .\lab_core\templates\lab_core\hero.html:23
 msgid ""
 "Personalized lab insights, fast result access, and clear care guidance for "
 "you and your family."
-msgstr "تحاليل طبية مخصصة ليك، ووصول سريع لنتائجك، وإرشادات صحية واضحة ليك ولعيلتك ."
+msgstr ""
+"تحاليل طبية مخصصة ليك، ووصول سريع لنتائجك، وإرشادات صحية واضحة ليك ولعيلتك ."
 
-#: .\lab_core\templates\lab_core\hero.html:26
+#: .\lab_core\templates\lab_core\hero.html:30
 #: .\lab_core\templates\lab_core\home.html:194
 msgid "Go to Dashboard"
 msgstr "اذهب إلى لوحة التحكم"
 
-#: .\lab_core\templates\lab_core\hero.html:30
+#: .\lab_core\templates\lab_core\hero.html:34
 msgid "Join Us / Login"
 msgstr "انضم إلينا / تسجيل الدخول"
 
@@ -631,31 +631,35 @@ msgstr "اقرأ المقال"
 #: .\lab_core\templates\lab_core\home.html:288
 #: .\lab_core\templates\lab_core\post_detail.html:45
 #: .\lab_core\templates\lab_core\post_detail.html:49
-msgid "Heart"
-msgstr "قلب"
+msgid "Like"
+msgstr "اعجاب"
 
 #: .\lab_core\templates\lab_core\home.html:280
 #: .\lab_core\templates\lab_core\post_detail.html:46
 #: .\lab_core\templates\lab_core\post_detail.html:49
-msgid "Unheart"
-msgstr "إلغاء الإعجاب"
+msgid "Unlike"
+msgstr "الغاء الاعجاب"
 
 #: .\lab_core\templates\lab_core\home.html:306
 msgid "No health advice posts available yet."
 msgstr "لا توجد مقالات نصائح صحية متاحة بعد."
 
 #: .\lab_core\templates\lab_core\login.html:4
-#: .\lab_core\templates\lab_core\login.html:11
-msgid "Patient Login"
-msgstr "تسجيل دخول المريض"
+#: .\lab_core\templates\lab_core\login.html:15
+msgid "User Login"
+msgstr "انضم إلينا / تسجيل الدخول"
 
-#: .\lab_core\templates\lab_core\login.html:12
+#: .\lab_core\templates\lab_core\login.html:16
 msgid "Access your laboratory results securely."
 msgstr "قم بالوصول إلى نتائج مختبرك بأمان."
 
-#: .\lab_core\templates\lab_core\login.html:43
-msgid "New patient?"
-msgstr "مريض جديد؟"
+#: .\lab_core\templates\lab_core\login.html:45
+msgid "Forgot your password?"
+msgstr "نسيت كلمة المرور؟"
+
+#: .\lab_core\templates\lab_core\login.html:50
+msgid "New user?"
+msgstr "مستخدم جديد؟"
 
 #: .\lab_core\templates\lab_core\password_change.html:28
 msgid "Back"
@@ -679,8 +683,8 @@ msgid "Login to Heart"
 msgstr "سجّل الدخول لإعجاب"
 
 #: .\lab_core\templates\lab_core\post_detail.html:57
-msgid "hearts"
-msgstr "إعجابات"
+msgid "Likes"
+msgstr "الإعجابات"
 
 #: .\lab_core\templates\lab_core\profile.html:16
 msgid "Personal profile"
@@ -715,33 +719,55 @@ msgid "Save changes"
 msgstr "حفظ التغييرات"
 
 #: .\lab_core\templates\lab_core\signup.html:4
-msgid "Patient Sign Up"
-msgstr "تسجيل مريض"
+#, fuzzy
+#| msgid "Sign In"
+msgid "Sign Up"
+msgstr "تسجيل الدخول"
 
-#: .\lab_core\templates\lab_core\signup.html:11
-msgid "Create Patient Account"
-msgstr "إنشاء حساب مريض"
+#: .\lab_core\templates\lab_core\signup.html:15
+#: .\lab_core\templates\lab_core\signup.html:58
+msgid "Create Account"
+msgstr "إنشاء حساب"
 
-#: .\lab_core\templates\lab_core\signup.html:12
+#: .\lab_core\templates\lab_core\signup.html:16
 msgid "Join PLAB to securely access your laboratory reports."
 msgstr "انضم إلى PLAB للوصول الآمن إلى تقارير المختبر الخاصة بك."
 
-#: .\lab_core\templates\lab_core\signup.html:28 .\lab_core\views.py:24
+#: .\lab_core\templates\lab_core\signup.html:32 .\lab_core\views.py:24
 msgid "Phone Number"
 msgstr "رقم الهاتف"
 
-#: .\lab_core\templates\lab_core\signup.html:43 .\lab_core\views.py:34
+#: .\lab_core\templates\lab_core\signup.html:47 .\lab_core\views.py:34
 msgid "Password"
 msgstr "كلمة المرور"
 
-#: .\lab_core\templates\lab_core\signup.html:48
+#: .\lab_core\templates\lab_core\signup.html:52
 msgid "Confirm Password"
 msgstr "تأكيد كلمة المرور"
-
-#: .\lab_core\templates\lab_core\signup.html:54
-msgid "Create Account"
-msgstr "إنشاء حساب"
 
 #: .\lab_core\views.py:39
 msgid "Enter your password"
 msgstr "أدخل كلمة المرور"
+
+#~ msgid "Heart"
+#~ msgstr "قلب"
+
+#~ msgid "Unheart"
+#~ msgstr "إلغاء الإعجاب"
+
+#~ msgid "hearts"
+#~ msgstr "إعجابات"
+
+#, fuzzy
+#~| msgid "Create Account"
+#~ msgid "Create User Account"
+#~ msgstr "إنشاء حساب"
+
+#~ msgid "Create Patient Account"
+#~ msgstr "إنشاء حساب مريض"
+
+#~ msgid "Patient Login"
+#~ msgstr "تسجيل دخول المريض"
+
+#~ msgid "New patient?"
+#~ msgstr "مريض جديد؟"

@@ -275,16 +275,16 @@
                 type="button"
                 class="btn btn-sm btn-light border heart-toggle-btn"
                 data-url="{% url 'lab_core:like_post_ajax' post.pk %}"
-                data-text-heart="{% trans 'Heart' %}"
-                data-text-unheart="{% trans 'Unheart' %}"
+                data-text-heart="{% trans 'Like' %}"
+                data-text-unheart="{% trans 'Unlike' %}"
               >
-                <span class="heart-btn-text"> {% trans "Heart" %} </span>
+                <span class="heart-btn-text"> {% trans "Like" %} </span>
               </button>
               {% else %}
               <a
                 href="{% url 'lab_core:login' %}"
                 class="btn btn-sm btn-light border"
-                >{% trans "Heart" %}</a
+                >{% trans "Like" %}</a
               >
               {% endif %}
 
