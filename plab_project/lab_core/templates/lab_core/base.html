@@ -19,14 +19,14 @@
     <link rel="canonical" href="{% if request %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endif %}">
     <meta property="og:locale" content="{% if LANGUAGE_BIDI %}ar_AE{% else %}en_US{% endif %}">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{% block og_title %}{% block title %}{% trans "PLAB Lab" %}{% endblock %}{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}{% block meta_description %}{% trans "PLAB (P Lab / بي لاب) provides secure online lab results, patient dashboards, and health advice in Arabic and English." %}{% endblock %}{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}{% trans "PLAB Lab" %}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{% trans "PLAB (P Lab / بي لاب) provides secure online lab results, patient dashboards, and health advice in Arabic and English." %}{% endblock %}">
     <meta property="og:url" content="{% if request %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endif %}">
     <meta property="og:image" content="{% if request %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo.svg' %}{% endif %}">
     <meta property="og:site_name" content="PLAB">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% block twitter_title %}{% block title %}{% trans "PLAB Lab" %}{% endblock %}{% endblock %}">
-    <meta name="twitter:description" content="{% block twitter_description %}{% block meta_description %}{% trans "PLAB (P Lab / بي لاب) provides secure online lab results, patient dashboards, and health advice in Arabic and English." %}{% endblock %}{% endblock %}">
+    <meta name="twitter:title" content="{% block twitter_title %}{% trans "PLAB Lab" %}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{% trans "PLAB (P Lab / بي لاب) provides secure online lab results, patient dashboards, and health advice in Arabic and English." %}{% endblock %}">
     {% block ld_json %}
     <script type="application/ld+json">
       {
