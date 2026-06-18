@@ -98,6 +98,21 @@ class AboutView(TemplateView):
         return context
 
 
+class ForgotPasswordView(TemplateView):
+    """Static forgot password info page."""
+    template_name = "lab_core/forgot_password.html"
+
+
+class RobotsTxtView(TemplateView):
+    template_name = "lab_core/robots.txt"
+    content_type = "text/plain"
+
+
+class SitemapXmlView(TemplateView):
+    template_name = "lab_core/sitemap.xml"
+    content_type = "application/xml"
+
+
 # class BlogPostDetailView(TemplateView):
 #     template_name = "lab_core/post_detail.html"
 

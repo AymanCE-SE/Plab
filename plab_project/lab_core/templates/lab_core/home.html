@@ -4,7 +4,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
-{% block title %}{% trans "Health Advice" %}{% endblock %}
+{% block title %}{% trans "PLAB | P Lab | بي لاب — Health Advice & Lab Results" %}{% endblock %}
+{% block meta_description %}{% trans "PLAB (P Lab / بي لاب) provides secure online lab results, patient dashboards, and health advice in Arabic and English." %}{% endblock %}
+{% block og_title %}{% trans "PLAB | P Lab | بي لاب — Health Advice & Lab Results" %}{% endblock %}
+{% block og_description %}{% trans "Access lab results, patient reports, and trusted health advice online with PLAB. Secure, bilingual, and easy to use." %}{% endblock %}
+{% block twitter_title %}{% trans "PLAB | P Lab | بي لاب — Health Advice & Lab Results" %}{% endblock %}
+{% block twitter_description %}{% trans "Access lab results, patient reports, and trusted health advice online with PLAB. Secure, bilingual, and easy to use." %}{% endblock %}
+{% block ld_description %}{% trans "PLAB makes lab result access easy for patients in Arabic and English, with secure dashboards and clear health guidance." %}{% endblock %}
 {% block content %}
 
 {% if lab_announcements %}
