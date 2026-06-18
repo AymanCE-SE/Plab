@@ -12,13 +12,17 @@
     </div>
     
     <div class="plab-hero-content">
-      {% comment %} <div class="plab-hero-text">
-        <span class="plab-hero-label">{% trans "Trusted lab guidance" %}</span>
-        <h1 class="plab-hero-title">{% trans "Health Advice & Patient Support" %}</h1>
+      <div class="plab-hero-text">
+        <div class="plab-hero-badge">
+          <!-- Bootstrap Shield Check Icon -->
+          <i class="bi bi-shield-check"></i>
+          <span class="plab-hero-label">{% trans "Trusted lab guidance" %}</span>
+        </div>
+        <h1 class="plab-hero-title">{% trans "P Lab" %}</h1>
         <p class="plab-hero-subtitle">
           {% trans "Personalized lab insights, fast result access, and clear care guidance for you and your family." %}
         </p>
-      </div> {% endcomment %}
+      </div> 
       
       <div class="plab-hero-buttons">
         {% if request.user.is_authenticated %}

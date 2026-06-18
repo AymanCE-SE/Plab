@@ -57,26 +57,78 @@
     margin-right: 0;
   }
   
-  .plab-hero-text {
-    color: #fff;
-  }
-  
+
   .plab-hero-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    /* font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1rem;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    color: red; */
+    /* Using the thick, rounded Arabic font */
+  font-family: 'Lalezar', cursive, sans-serif;
+  font-size: clamp(2.5rem, 6vw + 1rem, 80px);
+  font-weight: 600;
+  /* The red fill color */
+  color: #da2127; 
+  /* The white outline (stroke) */
+  -webkit-text-stroke-width: 4px; /* Thickness of the white border */
+  -webkit-text-stroke-color: #ffffff; /* White border color */
+  /* Paint order ensures the stroke goes on the outside of the letter 
+     rather than eating into the red fill */
+  paint-order: stroke fill; 
+  /* Optional: A very slight drop shadow to make it pop off the background */
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+  line-height: 1.2; 
+  margin: 0;
   }
   
+  /* 2. RESPONSIVE STROKE THICKNESS FOR MOBILE */
+@media (max-width: 768px) {
+  .plab-hero-title {
+    /* Shrink the white border on mobile so the red text stays readable */
+    -webkit-text-stroke-width: 2.5px; 
+  }
+}
+
   .plab-hero-subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    /* font-size: clamp(1rem, 2.5vw, 1.25rem);
     color: rgba(255, 255, 255, 0.95);
     line-height: 1.6;
     margin: 0;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  }
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); */
+    /* Using a highly readable Arabic web font */
+  font-family: 'Cairo', sans-serif;
   
+  /* Color for high contrast against a blue background */
+  color: #ffffff; 
+  
+  /* RESPONSIVE FONT SIZE (The Magic Trick):
+     clamp(Minimum Size, Preferred Responsive Size, Maximum Size)
+     - Mobile: Will not shrink below 16px (1rem)
+     - Tablet/Desktop: Scales fluidly using vw (viewport width)
+     - Widescreen: Will not grow larger than 24px (1.5rem) */
+  font-size: clamp(0.75rem, 2vw + 0.5rem, 1.25rem);
+
+  /* Arabic needs wider line spacing for readability */
+  line-height: 1.8;
+  font-weight: 400; /* Regular weight */
+  /* Responsive sizing constraints */
+  width: 100%;
+  max-width: 700px; /* Prevents the text line from getting too long on large desktop screens */
+  /* Spacing */
+  margin-top: 15px;
+  /* Optional: Adds a very subtle dark shadow to ensure readability 
+     even if the background behind it has a lighter gradient spot */
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  /* Correct alignment for Arabic */
+  }
+  @media (max-width: 480px) {
+  .hero-subheader {
+    line-height: 1.6;
+    padding: 0 10px;
+  }
+}
   .plab-hero-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -157,21 +209,40 @@
     box-shadow: 0 12px 28px rgba(255, 255, 255, 0.2);
   }
 
+  .plab-hero-badge {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Handles spacing between icon and text perfectly for both Arabic (RTL) and English (LTR) */
+  padding: 8px 24px;
+  border-radius: 50px; 
+  margin-bottom: 24px; 
+  
+  /* Colors */
+  background-color: #ffffff; 
+  color: #da2127; 
+  
+  /* Shadow */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), 
+              0px 1px 3px rgba(0, 0, 0, 0.08);
+}
+
 .plab-hero-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.18);
-    color: #f7fbff;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-  }
+  /* Typography */
+  font-family: 'Cairo', sans-serif; 
+  font-weight: 700; 
+  font-size: clamp(0.85rem, 1.5vw + 0.5rem, 1rem); 
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+
+/* Bootstrap Icon Sizing & Adjustment */
+.plab-hero-badge .bi {
+  font-size: 1.1rem; /* Adjusts icon size relative to the text */
+  line-height: 0; /* Prevents the icon from misaligning the vertical center */
+  color: #da2127; 
+}
 
 /* Section panel wrapper */
 .plab-section-panel {
