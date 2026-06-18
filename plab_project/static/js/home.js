@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // بنجيب كل الأزرار اللي واخدة الـ class ده في الصفحة الرئيسية
     const heartButtons = document.querySelectorAll(".heart-toggle-btn");
     
-    // دالة سحب الـ CSRF Token من الـ Cookies
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -19,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     const csrftoken = getCookie('csrftoken');
 
-    // بنعمل Loop على كل زرار لايك موجود في الصفحة ونضيفله الـ Event Listener
     heartButtons.forEach(function(button) {
         button.addEventListener("click", function(e) {
             e.preventDefault();
@@ -29,12 +26,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const textHeart = btn.getAttribute("data-text-heart");
             const textUnheart = btn.getAttribute("data-text-unheart");
             
-            // التريكة هنا: بنجيب الـ Row أو الـ Div القريب اللي شايل الزرار والـ Counter مع بعض
             const parentContainer = btn.closest(".d-flex");
             const btnTextSpan = parentContainer.querySelector(".heart-btn-text");
             const countDisplay = parentContainer.querySelector(".heart-count-display");
             
-            // إرسال طلب الـ AJAX
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -47,10 +42,8 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'ok') {
-                    // تحديث الـ Counter الخاص بالبوست ده بس
                     countDisplay.innerText = data.total_hearts;
                     
-                    // تغيير نص الزرار بناءً على حالة اللايك
                     if (data.has_hearted) {
                         btnTextSpan.innerText = textUnheart;
                         btn.classList.remove('btn-light');

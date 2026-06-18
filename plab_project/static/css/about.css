@@ -1,123 +1,323 @@
-.plab-about-hero {
-        border-radius: 1.25rem;
-        background: linear-gradient(135deg, var(--plab-dark) 0%, var(--plab-primary) 55%, #1a7fd4 100%);
-        color: #fff;
-        padding: 2.5rem 2rem;
-        box-shadow: 0 18px 40px rgba(0, 62, 133, 0.28);
-        position: relative;
-        overflow: hidden;
+/* Modern About page styles */
+.about-hero {
+    background: linear-gradient(135deg, var(--plab-dark) 0%, var(--plab-primary) 56%, #0c6cd2 100%);
+    color: #fff;
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 26px 70px rgba(0, 74, 154, 0.16);
+    overflow: hidden;
+}
+
+.about-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 10%, rgba(255,255,255,0.15) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.about-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.about-hero h1 {
+    font-size: clamp(2.75rem, 3.5vw, 4rem);
+    margin-bottom: 1rem;
+}
+
+.about-hero p.lead {
+    max-width: 40rem;
+    opacity: 0.95;
+}
+
+.about-card,
+.feature-card,
+.about-cta-card {
+    background: #fff;
+    border: 1px solid rgba(0, 86, 179, 0.16);
+    border-radius: 1.25rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    overflow: hidden;
+}
+
+.about-card:hover,
+.feature-card:hover,
+.about-cta-card:hover {
+    border-color: rgba(0, 86, 179, 0.28);
+    box-shadow: 0 24px 60px rgba(0, 86, 179, 0.14);
+    transform: translateY(-3px);
+}
+
+.about-card::before,
+.feature-card::before,
+.about-cta-card::before {
+    content: "";
+    display: block;
+    height: 0.45rem;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(0, 86, 179, 0.95), rgba(0, 140, 255, 0.55));
+}
+
+.about-card-header,
+.about-card-body,
+.feature-card {
+    padding: 1.5rem;
+}
+
+.about-card-header {
+    border-bottom: 1px solid rgba(0, 86, 179, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.about-card-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--plab-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.about-card-header h2,
+.about-card-label {
+    margin: 0;
+}
+
+.about-card-body {
+    display: grid;
+    gap: 1rem;
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+    border-bottom: 1px solid rgba(0, 86, 179, 0.06);
+    padding-bottom: 1rem;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.info-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--plab-primary);
+    background: rgba(0, 86, 179, 0.12);
+    font-size: 1.25rem;
+    box-shadow: inset 0 0 0 1px rgba(0, 86, 179, 0.08);
+}
+
+.info-row h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.info-text,
+.map-placeholder p,
+.feature-card p,
+.about-cta-card p {
+    margin: 0;
+    color: #58616b;
+    line-height: 1.75;
+}
+
+.info-placeholder {
+    margin: 0;
+    padding: 0.95rem 1rem;
+    color: #7a7f8b;
+    background: rgba(0, 86, 179, 0.04);
+    border-radius: 0.75rem;
+    border: 1px dashed rgba(0, 86, 179, 0.16);
+}
+
+.info-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--plab-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.info-link:hover {
+    color: #004196;
+}
+
+.about-map-panel {
+    min-height: 320px;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #eef4ff;
+    border: 1px solid rgba(0, 86, 179, 0.12);
+}
+
+.about-map-panel iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    min-height: 320px;
+}
+
+.map-placeholder {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    min-height: 320px;
+    padding: 2rem;
+    gap: 1rem;
+    color: #4b6488;
+}
+
+.map-placeholder i {
+    color: rgba(0, 86, 179, 0.22);
+    font-size: 3rem;
+}
+
+.map-placeholder p {
+    margin: 0;
+    color: #5f6c83;
+    font-size: 0.95rem;
+}
+.map-placeholder i {
+    font-size: 3rem;
+    color: rgba(0, 86, 179, 0.22);
+}
+
+.feature-card {
+    text-align: center;
+}
+
+.feature-icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    margin: 0 auto 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background: rgba(0, 86, 179, 0.08);
+    color: var(--plab-primary);
+    font-size: 1.5rem;
+}
+
+.feature-card h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.05rem;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+}
+
+.about-cta-card {
+    padding: 2rem;
+}
+
+.about-cta-card h2 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.9rem, 2.4vw, 2.4rem);
+}
+
+.about-cta-card p {
+    margin: 0;
+    color: #5f6c7f;
+}
+
+.btn-modern,
+.btn-modern-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.9rem;
+    font-weight: 600;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.btn-modern {
+    padding: 0.88rem 1.35rem;
+    background: linear-gradient(135deg, var(--plab-primary), #0f74ff);
+    border: none;
+    color: #fff;
+}
+
+.btn-modern:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(0, 86, 179, 0.18);
+}
+
+.btn-modern-outline {
+    padding: 0.88rem 1.35rem;
+    border: 1px solid rgba(0, 86, 179, 0.16);
+    background: rgba(255,255,255,0.96);
+    color: var(--plab-dark);
+}
+
+.btn-modern-outline:hover {
+    background: rgba(0, 86, 179, 0.08);
+    transform: translateY(-1px);
+}
+
+.about-cta-card .btn {
+    min-width: 10rem;
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 2.2rem 1.75rem;
     }
-    .plab-about-hero::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at 85% 20%, rgba(255,255,255,0.18) 0%, transparent 45%);
-        pointer-events: none;
-    }
-    .plab-about-hero .plab-about-hero-inner {
-        position: relative;
-        z-index: 1;
-    }
-    .plab-about-hero h1 {
-        font-weight: 700;
-        letter-spacing: 0.02em;
-    }
-    .plab-about-hero .lead {
-        opacity: 0.95;
-        max-width: 36rem;
-    }
-    .plab-feature-card {
+    .about-card,
+    .feature-card,
+    .about-cta-card {
         border-radius: 1rem;
-        border: 1px solid #d6e6ff;
-        background: var(--plab-surface);
-        height: 100%;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .plab-feature-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 14px 32px rgba(0, 86, 179, 0.12);
+    .about-cta-card {
+        padding: 1.75rem;
     }
-    .plab-feature-icon {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 0.85rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #e8f2fc, #d6eaff);
-        color: var(--plab-primary);
-        font-size: 1.35rem;
+}
+
+@media (max-width: 576px) {
+    .about-hero {
+        padding: 1.75rem 1.2rem;
     }
-    .plab-contact-panel {
-        border-radius: 1.25rem;
-        border: 1px solid #c8ddf5;
-        background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
-        box-shadow: 0 12px 28px rgba(0, 86, 179, 0.1);
+    .about-hero h1 {
+        font-size: 2.3rem;
     }
-    .plab-contact-row {
-        border-bottom: 1px solid #e3eef9;
-        padding: 1.25rem 1.5rem;
+    .info-row {
+        grid-template-columns: 1fr;
     }
-    .plab-contact-row:last-child {
-        border-bottom: 0;
+    .about-card-body,
+    .about-card-header,
+    .feature-card,
+    .about-cta-card {
+        padding: 1.25rem;
     }
-    .plab-placeholder {
-        border: 1px dashed #b8d4f0;
-        border-radius: 0.75rem;
-        padding: 0.85rem 1rem;
-        background: rgba(255, 255, 255, 0.7);
-    }
-    .plab-about-split-heading {
-        font-weight: 700;
-        color: var(--plab-primary);
-        letter-spacing: 0.02em;
-    }
-    .plab-icon-medical {
-        width: 2.75rem;
-        height: 2.75rem;
-        border-radius: 0.85rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #e8f2fc, #d6eaff);
-        color: var(--plab-primary);
-        font-size: 1.2rem;
-        flex-shrink: 0;
-    }
-    .plab-map-card {
-        border-radius: 1.25rem;
-        border: 1px solid #c8ddf5;
-        background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
-        box-shadow: 0 12px 28px rgba(0, 86, 179, 0.1);
-        overflow: hidden;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .plab-map-card .plab-map-card-head {
-        padding: 1.25rem 1.5rem 1rem;
-        border-bottom: 1px solid #e3eef9;
-        background: rgba(255, 255, 255, 0.9);
-    }
-    .plab-map-embed-wrap {
-        position: relative;
+    .about-cta-card .btn {
         width: 100%;
-        aspect-ratio: 16 / 9;
-        min-height: 220px;
-        max-height: min(70vh, 520px);
-        background: #e8f0fa;
+        justify-content: center;
     }
-    .plab-map-embed-wrap iframe {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-    }
-    .plab-map-embed-wrap.plab-map-placeholder {
-        aspect-ratio: auto;
-        min-height: 280px;
-    }
+}
 
 .pre-line {
     white-space: pre-line;

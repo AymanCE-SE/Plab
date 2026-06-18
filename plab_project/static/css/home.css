@@ -1,3 +1,4 @@
+/* Hero section */
 .plab-hero-container {
     position: relative;
     border-radius: 1.5rem;
@@ -155,132 +156,275 @@
     transform: translateY(-2px);
     box-shadow: 0 12px 28px rgba(255, 255, 255, 0.2);
   }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .plab-hero-container {
-      min-height: 300px;
-      padding: 1.5rem 1rem;
-    }
-    
-    .plab-hero-buttons {
-      gap: 0.75rem;
-    }
-    
-    .plab-hero-buttons .btn {
-      padding: 0.75rem 1.5rem;
-      font-size: 0.9rem;
-      border-radius: 0.625rem;
-    }
+
+.plab-hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #f7fbff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
   }
-.plab-home-hero-accent {
-    border-left: 4px solid var(--plab-primary);
-    padding-left: 1rem;
+
+/* Section panel wrapper */
+.plab-section-panel {
+    border-radius: 1.4rem;
+    background: #ffffff;
+    border: 1px solid rgba(2, 68, 135, 0.08);
+    box-shadow: 0 16px 40px rgba(0, 86, 179, 0.06);
+    padding: 2rem 1.5rem 1.75rem;
   }
-  [dir="rtl"] .plab-home-hero-accent {
-    border-left: 0;
-    border-right: 4px solid var(--plab-primary);
-    padding-left: 0;
-    padding-right: 1rem;
+
+.plab-section-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
-  .plab-services-section .carousel {
+
+.plab-section-heading h4 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+.plab-section-subtitle {
+    color: #586a8f;
+    max-width: 46rem;
+    margin: 0;
+    font-size: 0.96rem;
+  }
+
+/* Services carousel */
+.plab-services-panel {
+    border-radius: 1.4rem;
+    overflow: hidden;
+    border: 1px solid rgba(0, 86, 179, 0.12);
+    background: rgba(236, 246, 255, 0.9);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6), 0 12px 28px rgba(0, 86, 179, 0.08);
+  }
+
+.plab-services-section .carousel {
     border-radius: 1.25rem;
     overflow: hidden;
     box-shadow: 0 16px 40px rgba(0, 86, 179, 0.15);
   }
-  .plab-service-slide {
-    min-height: 280px;
+
+.plab-services-section .carousel-control-prev,
+.plab-services-section .carousel-control-next {
+    width: 3.1rem;
+    height: 3.1rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(0, 86, 179, 0.12);
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 10px 24px rgba(0, 86, 179, 0.12);
+  }
+
+.plab-services-section .carousel-control-prev-icon,
+.plab-services-section .carousel-control-next-icon {
+    filter: invert(27%) sepia(76%) saturate(558%) hue-rotate(191deg) brightness(95%) contrast(88%);
+  }
+
+.plab-services-section .carousel-indicators {
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+.plab-services-section .carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(0, 86, 179, 0.18);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+  }
+
+.plab-services-section .carousel-indicators .active {
+    width: 14px;
+    height: 14px;
+    background-color: #0056b3;
+  }
+
+.plab-service-slide {
+    min-height: 320px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2.5rem 1.5rem;
-    background: linear-gradient(
-      135deg,
-      var(--plab-dark) 0%,
-      var(--plab-primary) 50%,
-      #1a8ee6 100%
-    );
+    padding: 2.75rem 1.75rem;
     color: #fff;
+    background: linear-gradient(135deg, #0056b3 0%, #0878ed 55%, #2ea3ff 100%);
   }
-  .plab-service-slide.alt {
-    background: linear-gradient(135deg, #0a4a8c 0%, #0056b3 45%, #3d9ae8 100%);
+
+.plab-service-slide.alt {
+    background: linear-gradient(135deg, #0f4f92 0%, #1f75d9 55%, #4da2ff 100%);
   }
-  .plab-service-slide.soft {
-    background: linear-gradient(135deg, #e8f2fc 0%, #d6eaff 50%, #cfe2ff 100%);
+
+.plab-service-slide.soft {
+    background: linear-gradient(135deg, #eef5ff 0%, #d9e8ff 60%, #c1dbff 100%);
     color: #12324d;
   }
-  .plab-service-slide .service-icon-wrap {
+
+.plab-service-slide .service-icon-wrap {
     width: 4rem;
     height: 4rem;
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.2);
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
+    font-size: 1.65rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
   }
-  .plab-service-slide.soft .service-icon-wrap {
+
+.plab-service-slide.soft .service-icon-wrap {
     background: rgba(0, 86, 179, 0.12);
     color: var(--plab-primary);
   }
-  .plab-service-slide h3 {
+
+.plab-service-slide h3 {
     font-weight: 700;
-    font-size: 1.35rem;
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    margin-bottom: 0.9rem;
   }
-  .plab-service-slide p {
+
+.plab-service-slide p {
     opacity: 0.95;
-    max-width: 32rem;
+    max-width: 38rem;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.7;
   }
-  .plab-service-slide.soft p {
-    opacity: 0.88;
+
+.plab-service-slide.soft p {
+    opacity: 0.9;
   }
-  .plab-services-section .carousel-indicators [data-bs-target] {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.55);
-  }
-  .plab-services-section .carousel-indicators .active {
-    background-color: #fff;
-  }
-  .plab-comfort-card {
-    border-radius: 1rem;
-    border: 1px solid #d6e6ff;
-    background: var(--plab-surface);
+/* Patient benefit cards */
+.plab-comfort-card {
+    border-radius: 1.35rem;
+    border: 1px solid rgba(0, 86, 179, 0.12);
+    background: #ffffff;
     height: 100%;
-    padding: 1.5rem;
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
+    padding: 1.75rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
-  .plab-comfort-card:hover {
+
+.plab-comfort-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(0, 86, 179, 0.12);
+    box-shadow: 0 20px 48px rgba(0, 86, 179, 0.12);
+    border-color: rgba(0, 86, 179, 0.2);
   }
-  .plab-comfort-icon {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 0.85rem;
-    background: linear-gradient(135deg, #e8f2fc, #d6eaff);
+
+.plab-comfort-icon {
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #e9f3ff, #d4e7ff);
     color: var(--plab-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
+    box-shadow: inset 0 0 0 1px rgba(0, 86, 179, 0.08);
   }
-  .plab-home-cta {
-    border-radius: 1rem;
-    background: linear-gradient(90deg, #e8f2fc 0%, #f5f9ff 100%);
-    border: 1px solid #c8ddf5;
+
+.plab-home-cta {
+    border-radius: 1.35rem;
+    background: linear-gradient(90deg, #f7fbff 0%, #eaf3ff 100%);
+    border: 1px solid rgba(0, 86, 179, 0.14);
+    padding: 1.65rem 1.5rem;
+    box-shadow: 0 16px 40px rgba(0, 86, 179, 0.08);
+  }
+
+.plab-home-cta h5 {
+    margin-bottom: 0.35rem;
+    font-weight: 700;
+  }
+
+.plab-home-cta p {
+    margin-bottom: 0;
+    color: #5d6f8c;
+  }
+
+.plab-home-cta .btn {
+    min-width: 10rem;
+  }
+/* Blog post cards */
+.plab-card .card-body {
+    padding: 1.35rem;
   }
 
 .post-image {
   object-fit: cover;
-  height: 220px;
+  height: 240px;
   width: 100%;
   display: block;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
+
+.card.h-100.plab-card {
+    border: 1px solid rgba(0, 86, 179, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+.card.h-100.plab-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 86, 179, 0.12);
+    border-color: rgba(0, 86, 179, 0.18);
+  }
+
+.card-body .card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+.card-body p.card-text {
+    color: #495670;
+    line-height: 1.7;
+  }
+
+.card-body .btn-outline-primary {
+    border-radius: 0.85rem;
+  }
+
+@media (max-width: 768px) {
+    .plab-hero-container {
+      min-height: 340px;
+      padding: 1.5rem 1rem;
+    }
+    .plab-hero-text {
+      max-width: 100%;
+    }
+    .plab-hero-buttons {
+      gap: 0.75rem;
+    }
+    .plab-hero-buttons .btn {
+      padding: 0.75rem 1.4rem;
+      font-size: 0.92rem;
+      border-radius: 0.65rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .plab-services-section .carousel-control-prev,
+    .plab-services-section .carousel-control-next {
+      width: 2.8rem;
+      height: 2.8rem;
+    }
+}
+
