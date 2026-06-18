@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLAB 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-19 00:12+0300\n"
+"POT-Creation-Date: 2026-06-19 00:43+0300\n"
 "PO-Revision-Date: 2026-06-18 00:00+0000\n"
 "Last-Translator: PLAB Team <you@example.com>\n"
 "Language-Team: Arabic <your-team@example.com>\n"
@@ -436,6 +436,39 @@ msgstr "الملف غير متاح"
 msgid "No tests found"
 msgstr "لا توجد فحوصات"
 
+#: .\lab_core\templates\lab_core\forgot_password.html:4
+#, fuzzy
+#| msgid "Forgot your password?"
+msgid "Forgot Password"
+msgstr "نسيت كلمة المرور؟"
+
+#: .\lab_core\templates\lab_core\forgot_password.html:15
+#: .\lab_core\templates\lab_core\login.html:45
+msgid "Forgot your password?"
+msgstr "نسيت كلمة المرور؟"
+
+#: .\lab_core\templates\lab_core\forgot_password.html:16
+msgid "Don’t worry — we can help you regain access."
+msgstr "لا تقلق — نحن هنا لمساعدتك في استعادة حسابك."
+
+#: .\lab_core\templates\lab_core\forgot_password.html:19
+msgid "Please contact our support team on WhatsApp to reset your password."
+msgstr "يرجى التواصل مع فريق الدعم عبر الواتساب لإعادة تعيين كلمة المرور."
+
+#: .\lab_core\templates\lab_core\forgot_password.html:20
+msgid ""
+"Send a message to our support number and include your registered phone "
+"number."
+msgstr "أرسل رسالة إلى رقم الدعم الخاص بنا، واذكر فيها رقم هاتفك المسجل لدينا."
+
+#: .\lab_core\templates\lab_core\forgot_password.html:25
+msgid "Contact us on WhatsApp"
+msgstr "اضغط للتواصل معنا عبر الواتساب"
+
+#: .\lab_core\templates\lab_core\forgot_password.html:29
+msgid "Our team is ready to help you with a secure reset process."
+msgstr "فريقنا جاهز يرجعلك حسابك بخطوات بسيطة وآمنة."
+
 #: .\lab_core\templates\lab_core\hero.html:7
 #: .\lab_core\templates\lab_core\home.html:7
 msgid "Health Advice"
@@ -652,10 +685,6 @@ msgstr "انضم إلينا / تسجيل الدخول"
 #: .\lab_core\templates\lab_core\login.html:16
 msgid "Access your laboratory results securely."
 msgstr "قم بالوصول إلى نتائج مختبرك بأمان."
-
-#: .\lab_core\templates\lab_core\login.html:45
-msgid "Forgot your password?"
-msgstr "نسيت كلمة المرور؟"
 
 #: .\lab_core\templates\lab_core\login.html:50
 msgid "New user?"

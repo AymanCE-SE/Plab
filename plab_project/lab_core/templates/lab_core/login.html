@@ -42,7 +42,7 @@
 
                     <div class="login-actions">
                         <button type="submit" class="btn btn-primary flex-grow-1">{% trans "Sign In" %}</button>
-                        <a href="/forgot-password/" class="btn btn-link btn-forgot-password">{% trans "Forgot your password?" %}</a>
+                        <a href="{% url 'lab_core:forgot_password' %}" class="btn btn-link btn-forgot-password">{% trans "Forgot your password?" %}</a>
                     </div>
                 </form>
 

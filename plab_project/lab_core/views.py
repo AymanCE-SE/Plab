@@ -113,6 +113,10 @@ class AboutView(TemplateView):
 #         )
 #         return context
 
+class ForgotPasswordView(TemplateView):
+    """Static forgot password info page."""
+    template_name = "lab_core/forgot_password.html"
+
 class BlogPostDetailView(DetailView):
     model = BlogPost
     template_name = "lab_core/post_detail.html"

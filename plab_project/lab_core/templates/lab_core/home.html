@@ -6,6 +6,26 @@
 {% endblock %}
 {% block title %}{% trans "Health Advice" %}{% endblock %}
 {% block content %}
+
+{% if lab_announcements %}
+<section class="mb-5">
+  <div class="container">
+    {% for ann in lab_announcements %}
+      <div class="alert plab-announcement mb-3 py-3" role="alert">
+        {% if ann.title %}
+          <div class="plab-announcement-title mb-1">{{ ann.title }}</div>
+        {% endif %}
+        <div class="mb-0" style="white-space: pre-line;">{{ ann.body }}</div>
+        {% if ann.link_url and ann.link_label %}
+          <a href="{{ ann.link_url }}" class="btn btn-sm btn-primary mt-2" target="_blank" rel="noopener">{{ ann.link_label }}</a>
+        {% elif ann.link_url %}
+          <a href="{{ ann.link_url }}" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener">{% trans "Learn more" %}</a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
 {% include "lab_core/hero.html" %}
 
 <section class="plab-section-panel plab-services-panel plab-services-section mb-5">
