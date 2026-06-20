@@ -24,11 +24,7 @@
                     {% endif %}
                     <a href="{% url 'lab_core:dashboard' %}" class="btn btn-modern btn-sm">
                         <i class="bi bi-arrow-left-short"></i>
-                        {% if LANGUAGE_BIDI %}
-                            العوده لنتائج التحاليل
-                        {% else %}
-                            Back to Lab Results
-                        {% endif %}
+                        {% trans "Back to my Results" %}
                     </a>
                 </div>
             </div>

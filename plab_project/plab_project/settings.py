@@ -174,25 +174,6 @@ LOGIN_REDIRECT_URL = "lab_core:dashboard"
 LOGOUT_REDIRECT_URL = "lab_core:login"
 
 # --- About page (env overrides; if key omitted from .env, defaults below apply) ---
-PLAB_ABOUT_DESCRIPTION = _env_str(
-    "PLAB_ABOUT_DESCRIPTION",
-    "Medical Chemical Analysis Laboratory - Always with you because you deserve the best",
-)
-PLAB_ABOUT_DESCRIPTION_AR = _env_str(
-    "PLAB_ABOUT_DESCRIPTION_AR",
-    "معمل التحاليل الطبيه الكيميائية - دائما معك لانك تستحق الافضل",
-)
-PLAB_ABOUT_PHONE = _env_str("PLAB_ABOUT_PHONE", "01273512252 - 01202266850")
-PLAB_ABOUT_ADDRESS = _env_str(
-    "PLAB_ABOUT_ADDRESS",
-    "AbuHammad - Sharkya front of police station bridge Above Al-Tawhid Wal-Nur - Fifth Floor",
-)
-PLAB_ABOUT_ADDRESS_AR = _env_str(
-    "PLAB_ABOUT_ADDRESS_AR",
-    "ابوsssحماد - الشرقيه امام كوبري المركز اعلي التوحيد والنور - الدور الخامس",
-)
-PLAB_ABOUT_HOURS = _env_str("PLAB_ABOUT_HOURS", "Open 7 days a week: 10:00 AM – 12:00 AM")
-PLAB_ABOUT_HOURS_AR = _env_str("PLAB_ABOUT_HOURS_AR", "طوال ايام الاسبوع: ١٠ ص – ١٢ ص")
 PLAB_MAP_EMBED_URL = _env_str(
     "PLAB_MAP_EMBED_URL",
     "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d214.78767455545628!2d31.672667252118075!3d30.532268971503886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1781731092675!5m2!1sen!2seg",

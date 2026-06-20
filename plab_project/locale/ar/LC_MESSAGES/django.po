@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLAB 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-20 03:35+0300\n"
+"POT-Creation-Date: 2026-06-20 05:48+0300\n"
 "PO-Revision-Date: 2026-06-18 00:00+0000\n"
 "Last-Translator: PLAB Team <you@example.com>\n"
 "Language-Team: Arabic <your-team@example.com>\n"
@@ -221,6 +221,7 @@ msgid "Expected delivery"
 msgstr "التسليم المتوقع"
 
 #: .\lab_core\models.py:127 .\lab_core\models.py:147
+#: .\lab_core\templates\lab_core\about.html:60
 msgid "Description"
 msgstr "الوصف"
 
@@ -290,109 +291,229 @@ msgid "Lab announcements"
 msgstr "إعلانات المختبر"
 
 #: .\lab_core\templates\lab_core\about.html:8
-#: .\lab_core\templates\lab_core\base.html:135
-#: .\lab_core\templates\lab_core\base.html:200
+#: .\lab_core\templates\lab_core\about.html:17
+msgid "About P Lab"
+msgstr "عن بي لاب"
+
+#: .\lab_core\templates\lab_core\about.html:20
+msgid "Your partner for accurate diagnostics and a calm, clear patient experience."
+msgstr "شريكك الموثوق للتشخيص الدقيق وتجربة هادئة وواضحة."
+
+#: .\lab_core\templates\lab_core\about.html:25
+msgid "Explore health advice"
+msgstr "نصائح صحية"
+
+#: .\lab_core\templates\lab_core\about.html:30
+msgid "Go to Lab Results"
+msgstr "اذهب الي نتائج التحاليل"
+
+#: .\lab_core\templates\lab_core\about.html:35
+#: .\lab_core\templates\lab_core\login.html:4
+#: .\lab_core\templates\lab_core\login.html:15
+msgid "User Login"
+msgstr "انضم إلينا / تسجيل الدخول"
+
+#: .\lab_core\templates\lab_core\about.html:47
+msgid "Contact us"
+msgstr "تواصل معنا"
+
+#: .\lab_core\templates\lab_core\about.html:49
+msgid "Simple & helpful"
+msgstr "سهل وسريع"
+
+#: .\lab_core\templates\lab_core\about.html:52
+msgid "Get in touch with us for any inquiries or support."
+msgstr "للمزيد من المعلومات يرجى التواصل معنا."
+
+#: .\lab_core\templates\lab_core\about.html:61
+msgid ""
+"Medical Chemical Analysis Laboratory - Always with you because you deserve "
+"the best"
+msgstr "معمل التحاليل الطبيه الكيميائية - دائما معك لانك تستحق الافضل"
+
+#: .\lab_core\templates\lab_core\about.html:67
+msgid "Phone"
+msgstr "الهاتف"
+
+#: .\lab_core\templates\lab_core\about.html:81
+msgid "Address"
+msgstr "العنوان"
+
+#: .\lab_core\templates\lab_core\about.html:82
+msgid ""
+"AbuHammad - Sharkya front of police station bridge Above Al-Tawhid Wal-Nur - "
+"Fifth Floor"
+msgstr "ابوحماد - الشرقيه امام كوبري المركز اعلي التوحيد والنور - الدور الخامس"
+
+#: .\lab_core\templates\lab_core\about.html:88
+msgid "Working hours"
+msgstr "ساعات العمل"
+
+#: .\lab_core\templates\lab_core\about.html:89
+msgid "Open 7 days a week: 10:00 AM – 12:00 AM"
+msgstr "طوال ايام الاسبوع: ١٠ ص – ١٢ ص"
+
+#: .\lab_core\templates\lab_core\about.html:101
+#: .\lab_core\templates\lab_core\about.html:112
+msgid "Our location"
+msgstr "موقعنا"
+
+#: .\lab_core\templates\lab_core\about.html:102
+msgid "Visit us"
+msgstr "زورنا مباشرة"
+
+#: .\lab_core\templates\lab_core\about.html:105
+msgid "Click to view the lab location."
+msgstr " اضغط لرؤية موقع المختبر. "
+
+#: .\lab_core\templates\lab_core\about.html:138
+msgid "Secure access"
+msgstr "وصول آمن"
+
+#: .\lab_core\templates\lab_core\about.html:139
+msgid "View your lab results online quickly and easily."
+msgstr "عرض نتائجك عبر الإنترنت بسرعة وسهولة."
+
+#: .\lab_core\templates\lab_core\about.html:144
+msgid "Clear status"
+msgstr "حالة واضحه"
+
+#: .\lab_core\templates\lab_core\about.html:145
+msgid "Track every test from start to finish."
+msgstr "تابع كل اختبار من البداية حتى النهاية."
+
+#: .\lab_core\templates\lab_core\about.html:151
+msgid "Trusted care"
+msgstr "رعاية موثوقة"
+
+#: .\lab_core\templates\lab_core\about.html:152
+msgid "Health advice and helpful updates between visits."
+msgstr "إعلانات المختبر والنصائح الصحية تساعدك على البقاء مطلعاً بين الزيارات."
+
+#: .\lab_core\templates\lab_core\about.html:160
+msgid "Welcome back"
+msgstr " مرحباً بعودتك"
+
+#: .\lab_core\templates\lab_core\about.html:161
+msgid "Start your health journey"
+msgstr "ابدأ رحلتك الصحية"
+
+#: .\lab_core\templates\lab_core\about.html:164
+msgid "View your latest tests and result status now."
+msgstr " اطلع على نتائج الفحوصات والحالات الخاصة بك الآن. "
+
+#: .\lab_core\templates\lab_core\about.html:166
+msgid "Sign up or log in to track your tests easily."
+msgstr "سجل أو قم بتسجيل الدخول لتتبع فحوصاتك بسهولة. "
+
+#: .\lab_core\templates\lab_core\about.html:172
+#: .\lab_core\templates\lab_core\base.html:102
+msgid "Lab Results"
+msgstr "نتائج التحاليل"
+
+#: .\lab_core\templates\lab_core\about.html:174
+#: .\lab_core\templates\lab_core\base.html:96
+#: .\lab_core\templates\lab_core\base.html:197
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: .\lab_core\templates\lab_core\about.html:175
+msgid "Sign up"
+msgstr "تسجيل الدخول"
+
+#: .\lab_core\templates\lab_core\about.html:176
+msgid "Sign in"
+msgstr "تسجيل الدخول"
+
+#: .\lab_core\templates\lab_core\base.html:17
+msgid "PLAB | P Lab | معمل بي لاب"
+msgstr "P Lab | معمل بي لاب"
+
+#: .\lab_core\templates\lab_core\base.html:24
+#: .\lab_core\templates\lab_core\base.html:30
+msgid "PLAB Lab"
+msgstr "مختبر بي لاب"
+
+#: .\lab_core\templates\lab_core\base.html:25
+#: .\lab_core\templates\lab_core\base.html:31
+msgid ""
+"PLAB (P Lab / بي لاب) provides secure online lab results, patient "
+"dashboards, and health advice in Arabic and English."
+msgstr "يقدم بي لاب نتائج مخبرية امنه عبر الانترنت, ولوحه تحكم للمستخدمين, ونصائح صحية "
+
+#: .\lab_core\templates\lab_core\base.html:51
+msgid ""
+"PLAB offers secure online lab results, patient dashboards, and health advice "
+"in Arabic and English."
+msgstr "يقدم بي لاب نتائج مخبرية امنه عبر الانترنت, ولوحه تحكم للمستخدمين, ونصائح صحية بالغتين العربية والانجليزية "
+
+#: .\lab_core\templates\lab_core\base.html:74
+#: .\lab_core\templates\lab_core\base.html:178
+msgid "P LAB"
+msgstr "بي لاب"
+
+#: .\lab_core\templates\lab_core\base.html:89
+#: .\lab_core\templates\lab_core\base.html:187
+msgid "Home"
+msgstr "الرئيسية"
+
+#: .\lab_core\templates\lab_core\base.html:109
+#: .\lab_core\templates\lab_core\password_change.html:5
+#: .\lab_core\templates\lab_core\password_change.html:17
+#: .\lab_core\templates\lab_core\profile.html:77
+msgid "Change Password"
+msgstr "تغيير كلمة المرور"
+
+#: .\lab_core\templates\lab_core\base.html:116
+msgid "Admin Dashboard"
+msgstr "لوحة تحكم المدير"
+
+#: .\lab_core\templates\lab_core\base.html:125
+#: .\lab_core\templates\lab_core\base.html:190
 #: .\lab_core\templates\lab_core\hero.html:38
 msgid "About Us"
 msgstr "من نحن"
 
-#: .\lab_core\templates\lab_core\about.html:14
-msgid "About PLAB"
-msgstr "عنــا"
-
-#: .\lab_core\templates\lab_core\about.html:158
-msgid "Our location"
-msgstr "موقعنا"
-
-#: .\lab_core\templates\lab_core\base.html:17
-msgid "PLAB | P Lab | بي لاب"
-msgstr ""
-
-#: .\lab_core\templates\lab_core\base.html:18
-msgid ""
-"PLAB | P Lab | بي لاب — معمل أبوحماد للنتائج الطبية باللغتين العربية "
-"والإنجليزية."
-msgstr ""
-
-#: .\lab_core\templates\lab_core\base.html:23
-#: .\lab_core\templates\lab_core\base.html:29
-msgid "PLAB Lab"
-msgstr "مختبر بي لاب"
-
-#: .\lab_core\templates\lab_core\base.html:24
-#: .\lab_core\templates\lab_core\base.html:30
-msgid ""
-"PLAB (P Lab / بي لاب) provides secure online lab results, patient "
-"dashboards, and health advice in Arabic and English."
-msgstr ""
-
-#: .\lab_core\templates\lab_core\base.html:50
-msgid ""
-"PLAB offers secure online lab results, patient dashboards, and health advice "
-"in Arabic and English."
-msgstr ""
-
-#: .\lab_core\templates\lab_core\base.html:91
-#: .\lab_core\templates\lab_core\base.html:197
-msgid "Home"
-msgstr "الرئيسية"
-
-#: .\lab_core\templates\lab_core\base.html:98
-#: .\lab_core\templates\lab_core\base.html:207
-msgid "Profile"
-msgstr "الملف الشخصي"
-
-#: .\lab_core\templates\lab_core\base.html:115
-#: .\lab_core\templates\lab_core\password_change.html:5
-#: .\lab_core\templates\lab_core\password_change.html:17
-#: .\lab_core\templates\lab_core\profile.html:81
-msgid "Change Password"
-msgstr "تغيير كلمة المرور"
-
-#: .\lab_core\templates\lab_core\base.html:147
+#: .\lab_core\templates\lab_core\base.html:137
 msgid "Logout"
 msgstr "تسجيل خروج"
 
-#: .\lab_core\templates\lab_core\base.html:155
+#: .\lab_core\templates\lab_core\base.html:145
 msgid "Login / Sign-up"
 msgstr "تسجيل دخول / انشاء حساب"
 
-#: .\lab_core\templates\lab_core\base.html:165 .\plab_project\settings.py:129
+#: .\lab_core\templates\lab_core\base.html:155 .\plab_project\settings.py:129
 msgid "Arabic"
-msgstr "عربي"
+msgstr "العربية"
 
-#: .\lab_core\templates\lab_core\base.html:166 .\plab_project\settings.py:130
+#: .\lab_core\templates\lab_core\base.html:156 .\plab_project\settings.py:130
 msgid "English"
-msgstr "انجليزي"
+msgstr "الانجليزية"
 
-#: .\lab_core\templates\lab_core\base.html:189
-msgid "PLAB"
-msgstr "PLAB"
-
-#: .\lab_core\templates\lab_core\base.html:190
+#: .\lab_core\templates\lab_core\base.html:179
 msgid "Secure laboratory portal for patients."
-msgstr "بوابة مختبر آمنة للمرضى."
+msgstr " بوابة المختبر الآمنة."
 
-#: .\lab_core\templates\lab_core\base.html:191
-msgid "All rights reserved."
-msgstr "جميع الحقوق محفوظة."
+#: .\lab_core\templates\lab_core\base.html:180
+msgid "All Rights Reserved to P Lab"
+msgstr " جميع الحقوق محفوظة لنظام معمل بي لاب"
 
-#: .\lab_core\templates\lab_core\base.html:194
+#: .\lab_core\templates\lab_core\base.html:184
 msgid "Quick links"
 msgstr "روابط سريعة"
 
-#: .\lab_core\templates\lab_core\base.html:204
+#: .\lab_core\templates\lab_core\base.html:194
 #: .\lab_core\templates\lab_core\dashboard.html:4
 msgid "Dashboard"
-msgstr "لوحة التحكم"
+msgstr "نتائج التحاليل"
 
-#: .\lab_core\templates\lab_core\base.html:211
+#: .\lab_core\templates\lab_core\base.html:201
 #: .\lab_core\templates\lab_core\home.html:229
 #: .\lab_core\templates\lab_core\login.html:44
 msgid "Sign In"
 msgstr "تسجيل الدخول"
 
-#: .\lab_core\templates\lab_core\base.html:214
+#: .\lab_core\templates\lab_core\base.html:204
 #: .\lab_core\templates\lab_core\home.html:224
 #: .\lab_core\templates\lab_core\login.html:51
 msgid "Create an account"
@@ -489,14 +610,12 @@ msgstr "اضغط للتواصل معنا عبر الواتساب"
 msgid "Our team is ready to help you with a secure reset process."
 msgstr "فريقنا جاهز يرجعلك حسابك بخطوات بسيطة وآمنة."
 
-#: .\lab_core\templates\lab_core\hero.html:7
-msgid "Health Advice"
-msgstr "نصائح صحية"
 
 #: .\lab_core\templates\lab_core\hero.html:19
 msgid "Trusted lab guidance"
 msgstr "دليلك الموثوق للتحاليل"
 
+#: .\lab_core\templates\lab_core\hero.html:7
 #: .\lab_core\templates\lab_core\hero.html:21
 msgid "P Lab"
 msgstr "معمل بي لاب"
@@ -518,14 +637,12 @@ msgid "Join Us / Login"
 msgstr "انضم إلينا / تسجيل الدخول"
 
 #: .\lab_core\templates\lab_core\home.html:7
-msgid "P Lab | بي لاب — الرئيسية "
-msgstr "P Lab | بي لاب — الرئيسية"
+msgid "P Lab | Home"
+msgstr "معمل بي لاب - الرئيسية"
 
 #: .\lab_core\templates\lab_core\home.html:8
-msgid ""
-"PLAB | P Lab | بي لاب  . مختبر نتائج طبية آمن بالعربية والإنجليزية، وبوابة "
-"المرضى السريعة."
-msgstr "PLAB | P Lab | بي لاب  . مختبر نتائج طبية آمن بالعربية والإنجليزية، وبوابة المرضى السريعة."
+msgid "P Lab: Your secure medical results lab in Arabic & English. Access your health records quickly via our fast, secure patient portal."
+msgstr "بي لاب: مختبرك الآمن لنتائج التحاليل الطبية باللغتين العربية والإنجليزية. استلم تقاريرك فوراً عبر بوابة المرضى السريعة."
 
 #: .\lab_core\templates\lab_core\home.html:9
 msgid "PLAB | P-Lab | معمل بي لاب"
@@ -535,7 +652,9 @@ msgstr "PLAB | P-Lab | معمل بي لاب"
 msgid ""
 "PLAB | P Lab | بي لاب مختبر نتائج طبية آمن بالعربية والإنجليزية، وبوابتك "
 "السريعه."
-msgstr "PLAB | P Lab | بي لاب مختبر نتائج طبية آمن بالعربية والإنجليزية، وبوابتك السريعه."
+msgstr ""
+"PLAB | P Lab | بي لاب مختبر نتائج طبية آمن بالعربية والإنجليزية، وبوابتك "
+"السريعه."
 
 #: .\lab_core\templates\lab_core\home.html:11
 msgid "PLAB | P Lab | معمل بي لاب  "
@@ -543,15 +662,19 @@ msgstr "PLAB | P Lab | معمل بي لاب  "
 
 #: .\lab_core\templates\lab_core\home.html:12
 msgid ""
-"PLAB | P Lab | بي لاب في أبوحماد الشرقيه. مختبر نتائج طبية آمن بالعربية "
+"PLAB | P Lab | بي لاب أبوحماد الشرقيه. مختبر نتائج طبية آمن بالعربية "
 "والإنجليزية، وبوابة المرضى السريعة."
-msgstr "PLAB | P Lab | بي لاب في أبوحماد الشرقيه. مختبر نتائج طبية آمن بالعربية والإنجليزية، وبوابة المرضى السريعة."
+msgstr ""
+"PLAB | P Lab | بي لاب أبوحماد الشرقيه. مختبر نتائج طبية آمن بالعربية "
+"والإنجليزية، وبوابة المرضى السريعة."
 
 #: .\lab_core\templates\lab_core\home.html:13
 msgid ""
 "PLAB | P Lab | بي لاب في أبوحماد يجعل الوصول إلى نتائج المختبر سهلاً للمرضى "
 "بالعربية والإنجليزية."
-msgstr "PLAB | P Lab | بي لاب في أبوحماد يجعل الوصول إلى نتائج المختبر سهلاً للمرضى بالعربية والإنجليزية."
+msgstr ""
+"PLAB | P Lab | بي لاب يجعل الوصول إلى نتائج المختبر سهلاً للمرضى "
+"بالعربية والإنجليزية."
 
 #: .\lab_core\templates\lab_core\home.html:28
 msgid "Learn more"
@@ -736,11 +859,6 @@ msgstr "الغاء الاعجاب"
 msgid "No health advice posts available yet."
 msgstr "لا توجد مقالات نصائح صحية متاحة بعد."
 
-#: .\lab_core\templates\lab_core\login.html:4
-#: .\lab_core\templates\lab_core\login.html:15
-msgid "User Login"
-msgstr "انضم إلينا / تسجيل الدخول"
-
 #: .\lab_core\templates\lab_core\login.html:16
 msgid "Access your laboratory results securely."
 msgstr "قم بالوصول إلى نتائج مختبرك بأمان."
@@ -749,20 +867,24 @@ msgstr "قم بالوصول إلى نتائج مختبرك بأمان."
 msgid "New user?"
 msgstr "مستخدم جديد؟"
 
-#: .\lab_core\templates\lab_core\password_change.html:28
+#: .\lab_core\templates\lab_core\password_change.html:19
+msgid "Keep your account secure by updating your password regularly."
+msgstr "حافظ على حسابك آمنًا بتحديث كلمة المرور بشكل منتظم."
+
+#: .\lab_core\templates\lab_core\password_change.html:24
 msgid "Back"
 msgstr "رجوع"
 
-#: .\lab_core\templates\lab_core\password_change.html:45
+#: .\lab_core\templates\lab_core\password_change.html:41
 msgid "Old Password"
 msgstr "كلمة المرور القديمة"
 
-#: .\lab_core\templates\lab_core\password_change.html:53
-#: .\lab_core\templates\lab_core\password_change.html:61
+#: .\lab_core\templates\lab_core\password_change.html:49
+#: .\lab_core\templates\lab_core\password_change.html:57
 msgid "New Password"
 msgstr "كلمة المرور الجديدة"
 
-#: .\lab_core\templates\lab_core\password_change.html:68
+#: .\lab_core\templates\lab_core\password_change.html:64
 msgid "Update password"
 msgstr "تحديث كلمة المرور"
 
@@ -790,27 +912,29 @@ msgstr "المسؤول"
 msgid "Staff"
 msgstr "الموظف"
 
-#: .\lab_core\templates\lab_core\profile.html:38
+#: .\lab_core\templates\lab_core\profile.html:27
+msgid "Back to my Results"
+msgstr "العودة لفحوصاتي الطبية"
+
+#: .\lab_core\templates\lab_core\profile.html:34
 msgid "Phone number (login)"
 msgstr "رقم الهاتف (لتسجيل الدخول)"
 
-#: .\lab_core\templates\lab_core\profile.html:44
+#: .\lab_core\templates\lab_core\profile.html:40
 msgid "Member since"
 msgstr "عضو منذ"
 
-#: .\lab_core\templates\lab_core\profile.html:53
+#: .\lab_core\templates\lab_core\profile.html:49
 msgid "Edit details"
 msgstr "تعديل التفاصيل"
 
-#: .\lab_core\templates\lab_core\profile.html:76
+#: .\lab_core\templates\lab_core\profile.html:72
 msgid "Save changes"
 msgstr "حفظ التغييرات"
 
 #: .\lab_core\templates\lab_core\signup.html:4
-#, fuzzy
-#| msgid "Sign In"
 msgid "Sign Up"
-msgstr "تسجيل الدخول"
+msgstr "انشاء حساب"
 
 #: .\lab_core\templates\lab_core\signup.html:15
 #: .\lab_core\templates\lab_core\signup.html:58
@@ -819,7 +943,7 @@ msgstr "إنشاء حساب"
 
 #: .\lab_core\templates\lab_core\signup.html:16
 msgid "Join PLAB to securely access your laboratory reports."
-msgstr "انضم إلى PLAB للوصول الآمن إلى تقارير المختبر الخاصة بك."
+msgstr "انضم إلى بي لاب للوصول الآمن إلى تقارير المختبر الخاصة بك."
 
 #: .\lab_core\templates\lab_core\signup.html:32 .\lab_core\views.py:24
 msgid "Phone Number"
@@ -837,25 +961,3 @@ msgstr "تأكيد كلمة المرور"
 msgid "Enter your password"
 msgstr "أدخل كلمة المرور"
 
-#~ msgid "Heart"
-#~ msgstr "قلب"
-
-#~ msgid "Unheart"
-#~ msgstr "إلغاء الإعجاب"
-
-#~ msgid "hearts"
-#~ msgstr "إعجابات"
-
-#, fuzzy
-#~| msgid "Create Account"
-#~ msgid "Create User Account"
-#~ msgstr "إنشاء حساب"
-
-#~ msgid "Create Patient Account"
-#~ msgstr "إنشاء حساب مريض"
-
-#~ msgid "Patient Login"
-#~ msgstr "تسجيل دخول المريض"
-
-#~ msgid "New patient?"
-#~ msgstr "مريض جديد؟"

@@ -14,8 +14,9 @@
     <meta charset="UTF-8">
     <meta name="theme-color" content="#ffffff">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% trans "PLAB | P Lab | بي لاب" %}{% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}{% trans "PLAB | P Lab | بي لاب — معمل أبوحماد للنتائج الطبية باللغتين العربية والإنجليزية." %}{% endblock %}">
+    <title>{% block title %}{% trans "PLAB | P Lab | معمل بي لاب" %}{% endblock %}</title>
+    {% comment %} <meta name="description" content="{% block meta_description %}{% trans "PLAB | P Lab | بي لاب — معمل أبوحماد للنتائج الطبية باللغتين العربية والإنجليزية." %}{% endblock %}"> {% endcomment %}
+    <meta name="description" content="نظام إدارة معمل بي لاب (P Lab). منصة متكاملة لتسجيل التحاليل الطبية ومتابعة النتائج." />
     <link rel="canonical" href="{% if request %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endif %}">
     <meta name="google-site-verification" content="PxJVXRtH_UYlMxvtFAqxOOcSdOZHEG_9fn4JhhciJAQ" />
     <meta property="og:locale" content="{% if LANGUAGE_BIDI %}ar_AE{% else %}en_US{% endif %}">
@@ -68,13 +69,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark plab-navbar" style="background-color: var(--plab-dark);">
         <div class="container">
             <a class="navbar-brand plab-navbar-brand" href="{% url 'lab_core:home' %}">
-                <img src="{% static 'images/logo.svg' %}" alt="PLAB logo" class="plab-navbar-logo" />
+                <img src="{% static 'images/logo.svg' %}" alt="لوجو معمل بي لاب" class="plab-navbar-logo" />
                 <span class="plab-brand-text">
-                    {% if LANGUAGE_BIDI %}
-                        بى لاب
-                    {% else %}
-                        P LAB
-                    {% endif %}
+                    {% trans "P LAB" %}
                 </span>
             </a>
 
@@ -101,11 +98,7 @@
                         <li class="nav-item">
                             <a href="{% url 'lab_core:dashboard' %}" class="nav-link {% if request.resolver_match and request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
                                 <i class="bi bi-file-earmark-medical-fill"></i>
-                                {% if LANGUAGE_BIDI %}
-                                    نتائج التحاليل
-                                {% else %}
-                                    Lab Results
-                                {% endif %}
+                                {% trans "Lab Results" %}
                             </a>
                         </li>
 
@@ -120,11 +113,7 @@
                             <li class="nav-item">
                                 <a href="{% url 'admin:index' %}" class="nav-link nav-admin" target="_blank" rel="noopener" aria-label="Admin dashboard">
                                     <i class="bi bi-shield-lock-fill"></i>
-                                    {% if LANGUAGE_BIDI %}
-                                        لوحه تحكم المدير
-                                    {% else %}
-                                        Admin Dashboard
-                                    {% endif %}
+                                    {% trans "Admin Dashboard" %}
                                 </a>
                             </li>
                         {% endif %}
@@ -186,9 +175,9 @@
         <div class="container py-4">
             <div class="row g-4 align-items-start align-items-md-center">
                 <div class="col-md-5 col-lg-6">
-                    <div class="plab-footer-brand mb-1">{% trans "PLAB" %}</div>
+                    <div class="plab-footer-brand mb-1">{% trans "P LAB" %}</div>
                     <p class="plab-footer-tagline mb-2 mb-md-0">{% trans "Secure laboratory portal for patients." %}</p>
-                    <p class="small text-white-50 mb-0">© {% now "Y" %} {% trans "All rights reserved." %}</p>
+                    <p class="small text-white-50 mb-0">{% trans "All Rights Reserved to P Lab" %} © {% now "Y" %} </p>
                 </div>
                 <div class="col-md-7 col-lg-6">
                     <div class="small text-uppercase text-white-50 fw-semibold mb-2">{% trans "Quick links" %}</div>
