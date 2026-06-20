@@ -14,9 +14,10 @@
     <meta charset="UTF-8">
     <meta name="theme-color" content="#ffffff">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% trans "PLAB Lab" %}{% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}{% trans "PLAB (P Lab / بي لاب) provides secure online lab results, patient dashboards, and health advice in Arabic and English." %}{% endblock %}">
+    <title>{% block title %}{% trans "PLAB | P Lab | بي لاب" %}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{% trans "PLAB | P Lab | بي لاب — معمل أبوحماد للنتائج الطبية باللغتين العربية والإنجليزية." %}{% endblock %}">
     <link rel="canonical" href="{% if request %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endif %}">
+    <meta name="google-site-verification" content="PxJVXRtH_UYlMxvtFAqxOOcSdOZHEG_9fn4JhhciJAQ" />
     <meta property="og:locale" content="{% if LANGUAGE_BIDI %}ar_AE{% else %}en_US{% endif %}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{% block og_title %}{% trans "PLAB Lab" %}{% endblock %}">
