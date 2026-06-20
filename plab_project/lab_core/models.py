@@ -143,7 +143,7 @@ def blog_image_upload_path(instance, filename):
 
 class BlogPost(models.Model):
     title = models.CharField(_("Title"), max_length=255)
-    slug = models.SlugField(unique=True, allow_unicode=True, null=True)
+    slug = models.SlugField(unique=True, allow_unicode=True)
     description = models.TextField(_("Description"), blank=True)
     content = models.TextField(_("Content"))
     # Pinned posts appear first on the health blog for visibility.
